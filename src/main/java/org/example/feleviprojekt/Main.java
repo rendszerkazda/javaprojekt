@@ -53,7 +53,7 @@ public class Main extends Application {
         Line oramutato = new Line();
         oramutato.setStartX(300);
         oramutato.setStartY(300);
-        oramutato.setEndX(340);
+        oramutato.setEndX(370);
         oramutato.setEndY(200);
         oramutato.setStroke(Color.BLACK);
         oramutato.setStrokeWidth(10);
