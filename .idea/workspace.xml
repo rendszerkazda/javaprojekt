@@ -23,9 +23,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2fplx412BLPOwwZ96QQJ33msSHY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -40,8 +40,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Laptop/OneDrive - Széchenyi István Egyetem/Suli/Objektumorientált programozás/Felevi projekt/Feleviprojekt/src",
+    "last_opened_file_path": "C:/Users/Laptop/OneDrive - Széchenyi István Egyetem/Suli/Objektumorientált programozás/Felevi projekt/Feleviprojekt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,6 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1714506145279</updated>
       <workItem from="1714506146664" duration="4941000" />
+      <workItem from="1715450792785" duration="62000" />
+      <workItem from="1715529836349" duration="1242000" />
     </task>
     <servers />
   </component>
