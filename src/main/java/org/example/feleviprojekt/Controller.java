@@ -17,10 +17,14 @@ import java.util.Random;
 
 public class Controller {
     @FXML
-    AnchorPane felulNezetPane;
-    AnchorPane alulNezet;
-    AnchorPane oldalNezet;
-    AnchorPane konfig;
+    AnchorPane topviewPane;
+    @FXML
+    AnchorPane backviewPane;
+    @FXML
+    AnchorPane sideviewPane;
+    @FXML
+    AnchorPane configPane;
+    //TODO: Add fx:id to the anchorpanes
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -32,19 +36,30 @@ public class Controller {
         stage.show();
     }
     public void topView(ActionEvent event) throws IOException {
-        ObservableList<Node> ora = felulNezetPane.getChildren();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
+        ObservableList<Node> clock = topviewPane.getChildren();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/backView.fxml"));
         root = loader.load();
 
-        FelulnezetController felulnezetController = loader.getController();
-        felulnezetController.display(ora);
+        backController backController = loader.getController();
+        backController.display(clock);
 
         stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-        public void backView() {
+        public void backView(ActionEvent event) throws IOException {
+            ObservableList<Node> clock = backviewPane.getChildren();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
+            root = loader.load();
+
+            topController topController = loader.getController();
+            topController.display(clock);
+
+            stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
     }
     public void sideView() {
     }

@@ -49,7 +49,7 @@
                <children>
                   <SplitPane dividerPositions="0.4999999999999999" layoutX="3.0" layoutY="-2.0" prefHeight="184.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane fx:id="felulNezetPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
                               <Circle fill="#9ea5ac" layoutX="199.0" layoutY="148.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="102.80000000000001" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="152.60000000000002" AnchorPane.topAnchor="102.0" />
                               <Circle fill="#f7f7da" layoutX="199.0" layoutY="147.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="112.80000000000001" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="161.60000000000002" AnchorPane.topAnchor="110.0" />
@@ -78,7 +78,7 @@
                                                 <Font name="Verdana" size="11.0" />
                                              </font>
                                           </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
+                                          <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                           <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                        </children>
                                     </HBox>
@@ -89,7 +89,7 @@
                                                 <Font name="Verdana" size="11.0" />
                                              </font>
                                           </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
+                                          <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                           <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                        </children>
                                     </HBox>
@@ -100,7 +100,7 @@
                                                 <Font name="Verdana" size="11.0" />
                                              </font>
                                           </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
+                                          <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                           <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                        </children>
                                     </HBox>

@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="629.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.feleviprojekt.Controller">
+<AnchorPane prefHeight="629.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.feleviprojekt.backController">
    <children>
       <MenuBar prefHeight="26.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -30,99 +21,23 @@
           <Menu mnemonicParsing="false" text="Generálás" />
             <Menu mnemonicParsing="false" text="Nézet">
                <items>
-                  <RadioMenuItem mnemonicParsing="false" onAction="#fullView" selected="true" text="Teljes">
+                  <RadioMenuItem mnemonicParsing="false" onAction="#fullView" text="Teljes">
                      <toggleGroup>
                         <ToggleGroup fx:id="nezet" />
                      </toggleGroup>
                   </RadioMenuItem>
                   <RadioMenuItem mnemonicParsing="false" onAction="#topView" text="Felülnézet" toggleGroup="$nezet" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#backView" text="Alulnézet" toggleGroup="$nezet" />
+                  <RadioMenuItem mnemonicParsing="false" onAction="#backView" selected="true" text="Alulnézet" toggleGroup="$nezet" />
                   <RadioMenuItem mnemonicParsing="false" onAction="#sideView" text="Oldalnézet" toggleGroup="$nezet" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Súgó" />
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.5" layoutY="25.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <SplitPane dividerPositions="0.5" layoutX="7.0" layoutY="215.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="797.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.4999999999999999" layoutX="3.0" layoutY="-2.0" prefHeight="184.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane fx:id="felulNezetPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Circle fill="#9ea5ac" layoutX="199.0" layoutY="148.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="102.80000000000001" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="152.60000000000002" AnchorPane.topAnchor="102.0" />
-                              <Circle fill="#f7f7da" layoutX="199.0" layoutY="147.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="112.80000000000001" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="161.60000000000002" AnchorPane.topAnchor="110.0" />
-                              <Line endX="-83.19998168945312" endY="13.0" layoutX="298.0" layoutY="149.0" startX="-100.0" AnchorPane.bottomAnchor="134.09289358854295" AnchorPane.leftAnchor="197.2928924560547" AnchorPane.rightAnchor="182.09287414550784" AnchorPane.topAnchor="148.29289323091507" />
-                              <Line endX="-0.707122802734375" endY="0.292877197265625" layoutX="198.0" layoutY="147.0" startX="-0.707122802734375" startY="-26.0" AnchorPane.bottomAnchor="149.0071228027344" AnchorPane.leftAnchor="196.79287719726562" AnchorPane.rightAnchor="199.8071228027344" AnchorPane.topAnchor="120.5" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="0.0" />
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" layoutX="190.0" layoutY="14.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <VBox prefHeight="182.0" prefWidth="296.0">
-                                 <children>
-                                    <HBox alignment="CENTER" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Számlap">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Keret">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Szíj">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <TextField prefHeight="26.0" prefWidth="125.0" />
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="0.0" text=":">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField prefHeight="26.0" prefWidth="125.0" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
+          <AnchorPane fx:id="viewPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane fx:id="configPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
         </items>
       </SplitPane>
    </children>
