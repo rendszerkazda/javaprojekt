@@ -5,16 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1e03eec-601e-4368-80d5-3714b0e4230d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/FelulnezetController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/felulnezet.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/HelloController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/feleviprojekt/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "rendszerkazda"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8ad8b3d6-913c-4a0e-8ebc-d69998020efe" />
+        <option name="url" value="https://github.com/rendszerkazda/javaprojekt.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -39,7 +67,7 @@
     "Application.org.example.feleviprojekt.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "BroCode",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Laptop/OneDrive - Széchenyi István Egyetem/Suli/Objektumorientált programozás/Felevi projekt/Feleviprojekt",
@@ -58,6 +86,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Laptop\OneDrive - Széchenyi István Egyetem\Suli\Objektumorientált programozás\Felevi projekt\Feleviprojekt\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Laptop\OneDrive - Széchenyi István Egyetem\Suli\Objektumorientált programozás\Felevi projekt\Feleviprojekt\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">

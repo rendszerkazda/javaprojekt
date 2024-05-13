@@ -2,7 +2,7 @@ package org.example.feleviprojekt;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -11,8 +11,6 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Main extends Application {
 
@@ -23,9 +21,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        //Stage stage = new Stage();
-        Group root = new Group();
-        Scene scene = new Scene(root,600,600,Color.DARKSEAGREEN);
+        Parent root = FXMLLoader.load(getClass().getResource("/main.fxml"));
+        Scene scene = new Scene(root);
         Image icon = new Image("file:src/karoralogo.jpg");
 
         Text text = new Text("Hello World!!");
@@ -63,11 +60,11 @@ public class Main extends Application {
         ora.setRadius(190);
         ora.setFill(Color.CORNSILK);
 
-        root.getChildren().add(text);
-        root.getChildren().add(orakeret);
-        root.getChildren().add(ora);
-        root.getChildren().add(percmutato);
-        root.getChildren().add(oramutato);
+//        root.getChildren().add(text);
+//        root.getChildren().add(orakeret);
+//        root.getChildren().add(ora);
+//        root.getChildren().add(percmutato);
+//        root.getChildren().add(oramutato);
 
         stage.getIcons().add(icon);
         stage.setScene(scene);
