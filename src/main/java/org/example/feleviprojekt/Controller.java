@@ -7,38 +7,64 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.MenuItem;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class Controller {
     @FXML
-    Pane felulNezet;
-    Pane alulNezet;
-    Pane oldalNezet;
-    Pane konfig;
-
+    AnchorPane felulNezetPane;
+    AnchorPane alulNezet;
+    AnchorPane oldalNezet;
+    AnchorPane konfig;
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public void teljesNezet() {
-        System.out.println("Hello World!!");
+    public void fullView(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fullView.fxml"));
+        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-    public void felulNezet(ActionEvent event) throws IOException {
-        ObservableList<Node> ora = felulNezet.getChildren();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/felulNezet.fxml"));
+    public void topView(ActionEvent event) throws IOException {
+        ObservableList<Node> ora = felulNezetPane.getChildren();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
         root = loader.load();
 
         FelulnezetController felulnezetController = loader.getController();
         felulnezetController.display(ora);
 
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void alulNezet() {
-        System.out.println("Hello World!!");
+        public void backView() {
+    }
+    public void sideView() {
+    }
+    public void save() {
+        FileChooser savefile = new FileChooser();
+        Random rand;
+        savefile.setTitle("Fájl mentése...");
+        savefile.showSaveDialog(stage);
+        //TODO: Implement save function
+    }
+    public void open() {
+        FileChooser openfile = new FileChooser();
+        openfile.setTitle("Fájl megnyitása...");
+        openfile.showOpenDialog(stage);
+        //TODO: Implement open function
+    }
+    public void generate() {
+        //TODO: Implement object random generataion function
+    }
+    public void help() {
+        //TODO: Implement help function
     }
 }

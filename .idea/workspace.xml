@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1e03eec-601e-4368-80d5-3714b0e4230d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/FelulnezetController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/felulnezet.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/main.fxml" afterDir="false" />
+    <list default="true" id="c1e03eec-601e-4368-80d5-3714b0e4230d" name="Changes" comment="Trying to make views work">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/FelulnezetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/FelulnezetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/feleviprojekt/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/felulnezet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/felulnezet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +29,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "rendszerkazda"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rendszerkazda&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -43,6 +42,9 @@
         <option name="url" value="https://github.com/rendszerkazda/javaprojekt.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -63,6 +65,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.Unnamed.executor": "Run",
     "Application.org.example.feleviprojekt.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -79,7 +82,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -93,6 +96,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.example.feleviprojekt.Main" />
       <module name="Feleviprojekt" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Laptop\Downloads\openjfx-22.0.1_windows-x64_bin-sdk\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
@@ -118,11 +122,25 @@
       <workItem from="1714506146664" duration="4941000" />
       <workItem from="1715450792785" duration="62000" />
       <workItem from="1715529836349" duration="1242000" />
+      <workItem from="1715610788071" duration="7446000" />
     </task>
+    <task id="LOCAL-00001" summary="Trying to make views work">
+      <option name="closed" value="true" />
+      <created>1715609097413</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715609097413</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Trying to make views work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to make views work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
