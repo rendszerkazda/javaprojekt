@@ -8,11 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/backController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/backController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/sideController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/sideController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/topController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/topController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fullView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fullView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sideView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sideView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/topView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/topView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +126,9 @@
       <workItem from="1715450792785" duration="62000" />
       <workItem from="1715529836349" duration="1242000" />
       <workItem from="1715610788071" duration="17649000" />
-      <workItem from="1715682291494" duration="1526000" />
+      <workItem from="1715682291494" duration="3504000" />
+      <workItem from="1715698302250" duration="135000" />
+      <workItem from="1715724218260" duration="4131000" />
     </task>
     <task id="LOCAL-00001" summary="Trying to make views work">
       <option name="closed" value="true" />
