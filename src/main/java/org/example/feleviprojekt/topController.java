@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class topController {
+public class topController extends Controller {
     @FXML
     AnchorPane viewPane;
     AnchorPane configPane;
@@ -18,9 +18,18 @@ public class topController {
         //TODO: Correct center nodes position
         //TODO: Config pane children copy
     }
+
+    public void backView(ActionEvent event) throws IOException {
+        //Go to backview
+        super.backView(event);
+    }
+
+    public void sideView(ActionEvent event) throws IOException {
+        //Go to side view
+        super.sideView(event);
+    }
     public void fullView(ActionEvent event) throws IOException {
         //Go back to full view
-        Controller controller = new Controller();
-        controller.fullView(event);
+        super.fullView(event);
     }
 }

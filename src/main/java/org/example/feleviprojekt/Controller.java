@@ -24,10 +24,10 @@ public class Controller {
     AnchorPane sideviewPane;
     @FXML
     AnchorPane configPane;
-    //TODO: Add fx:id to the anchorpanes
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     public void fullView(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fullView.fxml"));
         stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
@@ -35,8 +35,8 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-    public void topView(ActionEvent event) throws IOException {
-        ObservableList<Node> clock = topviewPane.getChildren();
+    public void backView(ActionEvent event) throws IOException {
+        ObservableList<Node> clock = this.backviewPane.getChildren();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/backView.fxml"));
         root = loader.load();
 
@@ -48,24 +48,34 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-        public void backView(ActionEvent event) throws IOException {
-            ObservableList<Node> clock = backviewPane.getChildren();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
-            root = loader.load();
+    public void topView(ActionEvent event) throws IOException {
+        ObservableList<Node> clock = topviewPane.getChildren();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
+        root = loader.load();
 
-            topController topController = loader.getController();
-            topController.display(clock);
+        topController topController = loader.getController();
+        topController.display(clock);
 
-            stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-    public void sideView() {
+    public void sideView(ActionEvent event) throws IOException {
+        ObservableList<Node> clock = sideviewPane.getChildren();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sideView.fxml"));
+        root = loader.load();
+
+        sideController sideController = loader.getController();
+        sideController.display(clock);
+
+        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
     public void save() {
         FileChooser savefile = new FileChooser();
-        Random rand;
         savefile.setTitle("Fájl mentése...");
         savefile.showSaveDialog(stage);
         //TODO: Implement save function

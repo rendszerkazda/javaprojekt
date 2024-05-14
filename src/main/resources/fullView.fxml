@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -15,6 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="629.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.feleviprojekt.Controller">
@@ -51,13 +53,24 @@
                     <items>
                       <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <Circle fill="#9ea5ac" layoutX="199.0" layoutY="148.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="102.80000000000001" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="152.60000000000002" AnchorPane.topAnchor="102.0" />
-                              <Circle fill="#f7f7da" layoutX="199.0" layoutY="147.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="112.80000000000001" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="161.60000000000002" AnchorPane.topAnchor="110.0" />
-                              <Line endX="-83.19998168945312" endY="13.0" layoutX="298.0" layoutY="149.0" startX="-100.0" AnchorPane.bottomAnchor="134.09289358854295" AnchorPane.leftAnchor="197.2928924560547" AnchorPane.rightAnchor="182.09287414550784" AnchorPane.topAnchor="148.29289323091507" />
-                              <Line endX="-0.707122802734375" endY="0.292877197265625" layoutX="198.0" layoutY="147.0" startX="-0.707122802734375" startY="-26.0" AnchorPane.bottomAnchor="149.0071228027344" AnchorPane.leftAnchor="196.79287719726562" AnchorPane.rightAnchor="199.8071228027344" AnchorPane.topAnchor="120.5" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" layoutX="61.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="100.0" AnchorPane.bottomAnchor="124.4" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="236.8" AnchorPane.topAnchor="122.0" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" layoutX="235.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="100.0" AnchorPane.bottomAnchor="124.80000000000001" AnchorPane.leftAnchor="235.0" AnchorPane.rightAnchor="62.60000000000002" AnchorPane.topAnchor="122.0" />
+                              <Circle fill="#9ea5ac" layoutX="197.0" layoutY="147.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="99.80000000000001" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="150.60000000000002" AnchorPane.topAnchor="97.0" />
+                              <Circle fill="#f7f7da" layoutX="198.0" layoutY="147.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="112.80000000000001" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="162.60000000000002" AnchorPane.topAnchor="110.0" />
+                              <Line endX="-77.20001220703125" endY="-19.599990844726562" layoutX="276.0" layoutY="168.0" startX="-64.79998779296875" startY="-6.4000091552734375" />
+                              <Line endX="-0.20001220703125" endY="-0.10709838569164276" layoutX="198.0" layoutY="147.0" startX="-0.707122802734375" startY="-26.0" AnchorPane.topAnchor="120.5" />
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="335.0" layoutY="122.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" />
+                              <Line endX="-4.999969482421875" endY="-1.52587890625E-5" layoutX="349.0" layoutY="147.0" startX="11.800018310546875" startY="-1.52587890625E-5" stroke="#666666" strokeWidth="3.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="0.0" />
+                      <AnchorPane fx:id="sideviewPane" minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="0.0">
+                           <children>
+                              <Label layoutX="76.0" layoutY="91.0" prefHeight="114.0" prefWidth="245.0" text="&lt;Oldalnézet&gt;" AnchorPane.bottomAnchor="91.20000000000002" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="91.0">
+                                 <font>
+                                    <Font name="Verdana" size="34.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                     </items>
                   </SplitPane>
                </children>
@@ -66,10 +79,17 @@
                <children>
                   <SplitPane dividerPositions="0.5" layoutX="190.0" layoutY="14.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane fx:id="backviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <VBox prefHeight="182.0" prefWidth="296.0">
+                              <Label layoutX="91.0" layoutY="91.0" prefHeight="114.0" prefWidth="216.0" text="&lt;Alulnézet&gt;" AnchorPane.bottomAnchor="91.4" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="91.2">
+                                 <font>
+                                    <Font name="Verdana" size="34.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                      <AnchorPane fx:id="configPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="299.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <HBox alignment="CENTER" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
                                        <children>
@@ -116,6 +136,9 @@
                                        </children>
                                     </HBox>
                                  </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
                               </VBox>
                            </children>
                         </AnchorPane>

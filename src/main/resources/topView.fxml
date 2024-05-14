@@ -34,6 +34,6 @@
             </menus>
         </MenuBar>
       <AnchorPane fx:id="viewPane" layoutY="26.0" prefHeight="222.0" prefWidth="606.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0" />
-      <AnchorPane layoutY="250.0" prefHeight="150.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0" />
+      <AnchorPane fx:id="configPane" layoutY="250.0" prefHeight="150.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="250.0" />
     </children>
 </AnchorPane>

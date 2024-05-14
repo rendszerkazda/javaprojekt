@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class backController {
+public class backController extends Controller{
     @FXML
     AnchorPane viewPane;
     AnchorPane configPane;
@@ -20,7 +20,15 @@ public class backController {
     }
     public void fullView(ActionEvent event) throws IOException {
         //Go back to full view
-        Controller controller = new Controller();
-        controller.fullView(event);
+        super.fullView(event);
     }
+    public void topView(ActionEvent event) throws IOException {
+        //Go to top view
+        super.topView(event);
+    }
+    public void sideView(ActionEvent event) throws IOException {
+        //Go to side view
+        super.sideView(event);
+    }
+
 }
