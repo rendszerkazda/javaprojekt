@@ -24,6 +24,7 @@ public class backController extends Controller{
     }
     public void topView(ActionEvent event) throws IOException {
         //Go to top view
+        fullView(event);
         super.topView(event);
     }
     public void sideView(ActionEvent event) throws IOException {
