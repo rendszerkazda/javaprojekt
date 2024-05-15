@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c1e03eec-601e-4368-80d5-3714b0e4230d" name="Changes" comment="Trying to make views work">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/backController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/backController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/sideController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/sideController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/topController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feleviprojekt/topController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fullView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fullView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sideView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sideView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/topView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/topView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +97,6 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.example.feleviprojekt.Main" />
       <module name="Feleviprojekt" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Laptop\Downloads\openjfx-22.0.1_windows-x64_bin-sdk\javafx-sdk-22.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
