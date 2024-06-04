@@ -12,9 +12,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -34,9 +37,30 @@ public class Controller implements Initializable {
     @FXML
     AnchorPane configPane;
 
+    @FXML
+    AnchorPane rootAnchor;
+
+    @FXML
+    SplitPane felsoPane;
+
+    @FXML
+    SplitPane alsoPane;
+
+    @FXML
+    SplitPane mainPane;
+
+    @FXML
+    MenuBar menuBar;
+
+    @FXML
+    Rectangle buckleRec;
+    @FXML
+    Line buckleLine;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private int hour = 3, minute = 60;
 
     public void fullView(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fullView.fxml"));
@@ -113,6 +137,8 @@ public class Controller implements Initializable {
     @FXML
     private Circle frame;
     @FXML
+    private Rectangle strap;
+    @FXML
     private Line hourHand;
     @FXML
     private Line minuteHand;
@@ -142,5 +168,76 @@ public class Controller implements Initializable {
                 frame.setRadius(frameSlider.getValue());
             }
         });
+
+        felsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                alsoPane.setDividerPositions(felsoPane.getDividerPositions());
+                WindowChanged();
+            }
+        });
+
+        alsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                felsoPane.setDividerPositions(alsoPane.getDividerPositions());
+                WindowChanged();
+            }
+        });
+
+        mainPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                WindowChanged();
+            }
+        });
+
+        WindowChanged();
+    }
+
+    private void ChangeHands() {
+        double minuteHandLength = watchFace.getRadius() * .75;
+        double hourHandLength = watchFace.getRadius() * .35;
+
+        double minuteAngle = (double)(360/60) * ((minute == 60) ? 0 : minute);
+        double hourAngle = (double)(360/12) * ((hour == 12) ? 0 : hour);
+
+        // Nagymutató
+        minuteHand.setStartX(topviewPane.getWidth() / 2);
+        minuteHand.setStartY(topviewPane.getHeight() / 2);
+        minuteHand.setEndX(minuteHand.getStartX() + minuteHandLength * Math.sin(Math.toRadians(minuteAngle)));
+        minuteHand.setEndY(minuteHand.getStartY() - minuteHandLength * Math.cos(Math.toRadians(minuteAngle)));
+
+        // Kismutató
+        hourHand.setStartX(topviewPane.getWidth() / 2);
+        hourHand.setStartY(topviewPane.getHeight() / 2);
+        hourHand.setEndX(hourHand.getStartX() + hourHandLength * Math.sin(Math.toRadians(hourAngle)));
+        hourHand.setEndY(hourHand.getStartY() - hourHandLength * Math.cos(Math.toRadians(hourAngle)));
+    }
+
+    private void WindowChanged() {
+
+        // Keret
+        frame.setCenterX(topviewPane.getWidth() / 2);
+        frame.setCenterY(topviewPane.getHeight() / 2);
+
+        // Számlap
+        watchFace.setCenterX(topviewPane.getWidth() / 2);
+        watchFace.setCenterY(topviewPane.getHeight() / 2);
+
+        // Szíj
+        strap.setX(topviewPane.getWidth() / 2 - strap.getWidth() / 2);
+        strap.setY(topviewPane.getHeight() / 2 - strap.getHeight() / 2);
+
+        ChangeHands();
+
+        // Csat
+        buckleRec.setX(strap.getX() + strap.getWidth());
+        buckleRec.setY(strap.getY());
+
+        buckleLine.setStartX(strap.getX() + strap.getWidth());
+        buckleLine.setStartY(strap.getY() + buckleRec.getHeight() / 2);
+        buckleLine.setEndX(buckleLine.getStartX() + buckleRec.getWidth() / 3);
+        buckleLine.setEndY(buckleLine.getStartY());
     }
 }
