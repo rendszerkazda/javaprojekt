@@ -7,11 +7,9 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -31,18 +29,7 @@
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Generálás" />
-            <Menu mnemonicParsing="false" text="Nézet">
-               <items>
-                  <RadioMenuItem mnemonicParsing="false" onAction="#fullView" selected="true" text="Teljes">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="nezet" />
-                     </toggleGroup>
-                  </RadioMenuItem>
-                  <RadioMenuItem mnemonicParsing="false" onAction="#topView" text="Felülnézet" toggleGroup="$nezet" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#backView" text="Alulnézet" toggleGroup="$nezet" />
-                  <RadioMenuItem mnemonicParsing="false" onAction="#sideView" text="Oldalnézet" toggleGroup="$nezet" />
-               </items>
-            </Menu>
+            <Menu mnemonicParsing="false" text="Nézet" />
           <Menu mnemonicParsing="false" text="Súgó" />
         </menus>
       </MenuBar>
@@ -119,13 +106,13 @@
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="hourTextField" prefHeight="26.0" prefWidth="125.0" />
+                                    <TextField fx:id="hourTextField" prefHeight="26.0" prefWidth="125.0" promptText="Óra" />
                                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="0.0" text=":">
                                        <font>
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="minuteTextField" prefHeight="26.0" prefWidth="125.0" />
+                                    <TextField fx:id="minuteTextField" prefHeight="26.0" prefWidth="125.0" promptText="Perc" />
                                     <Button fx:id="currentTimeBtn" alignment="CENTER" mnemonicParsing="false" text="Pontos idő">
                                        <font>
                                           <Font name="Verdana" size="11.0" />

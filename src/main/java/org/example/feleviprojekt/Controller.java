@@ -33,27 +33,20 @@ public class Controller implements Initializable {
     AnchorPane sideviewPane;
     @FXML
     AnchorPane configPane;
-
     @FXML
     AnchorPane rootAnchor;
-
     @FXML
     SplitPane felsoPane;
-
     @FXML
     SplitPane alsoPane;
-
     @FXML
     SplitPane mainPane;
-
     @FXML
     MenuBar menuBar;
-
     @FXML
     Rectangle buckleRec;
     @FXML
     Line buckleLine;
-
     @FXML
     Rectangle backviewStrap;
     @FXML
@@ -62,20 +55,16 @@ public class Controller implements Initializable {
     Rectangle backviewBuckleRec;
     @FXML
     Line backviewBuckleLine;
-
     @FXML
     Rectangle sideviewStrap;
     @FXML
     Rectangle sideviewBuckle;
     @FXML
     Rectangle sideviewFrame;
-
     @FXML
     TextField hourTextField;
-
     @FXML
     TextField minuteTextField;
-
     @FXML
     Button currentTimeBtn;
 
@@ -84,54 +73,6 @@ public class Controller implements Initializable {
     private Parent root;
     private int hour = 3, minute = 60;
 
-    public void fullView(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fullView.fxml"));
-        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-        System.out.println(((MenuItem) event.getSource()).getParentPopup());
-    }
-    public void topView(ActionEvent event) throws IOException {
-        ObservableList<Node> clock = topviewPane.getChildren();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/topView.fxml"));
-        root = loader.load();
-
-        topController topController = loader.getController();
-        topController.display(clock);
-
-        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void backView(ActionEvent event) throws IOException {
-        ObservableList<Node> clock = this.backviewPane.getChildren();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/backView.fxml"));
-        root = loader.load();
-
-        backController backController = loader.getController();
-        backController.display(clock);
-
-        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void sideView(ActionEvent event) throws IOException {
-        ObservableList<Node> clock = sideviewPane.getChildren();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sideView.fxml"));
-        root = loader.load();
-
-        sideController sideController = loader.getController();
-        sideController.display(clock);
-
-        stage = (Stage)((MenuItem)event.getSource()).getParentPopup().getOwnerWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
     public void save() {
         FileChooser savefile = new FileChooser();
         savefile.setTitle("Fájl mentése...");
@@ -174,24 +115,27 @@ public class Controller implements Initializable {
         watchFaceSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                watchFaceSlider.setMax(frame.getRadius()-2);
-                frameSlider.setMin(watchFace.getRadius()+5);
+                //watchFaceSlider.setMax(frame.getRadius()-2);
+                //frameSlider.setMin(watchFace.getRadius()+5);
                 watchFace.setRadius(watchFaceSlider.getValue());
                 //TODO: Make the hands follow the watchface size
 //                minuteHand.setEndY(watchFace.getRadius()-9);
 //                hourHand.setEndY(hourHand.getEndY()+watchFace.getRadius()-14);
 //                hourHand.setEndX(hourHand.getEndX()+watchFace.getRadius()-14);
+                frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
 
-            }
-        });
-        frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                        frame.setRadius(frameSlider.getValue());
+                    }
+                });
                 watchFaceSlider.setMax(frame.getRadius()-2);
                 frameSlider.setMin(watchFace.getRadius()+5);
-                frame.setRadius(frameSlider.getValue());
+                watchFaceSlider.setMax(frame.getRadius()-2);
+                frameSlider.setMin(watchFace.getRadius()+5);
             }
         });
+
 
         timeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -213,7 +157,7 @@ public class Controller implements Initializable {
                     hour = 23;
                 }
             } catch (NumberFormatException e) {
-
+                minuteTextField.setText("0");
             }
             ChangeSlider();
             ChangeHands();
@@ -227,7 +171,7 @@ public class Controller implements Initializable {
                     minute = 59;
                 }
             } catch (NumberFormatException e) {
-
+                minuteTextField.setText("0");
             }
             ChangeSlider();
             ChangeHands();
