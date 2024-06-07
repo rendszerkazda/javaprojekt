@@ -113,24 +113,23 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //TODO: Update these properties on every resize
-
+        int maxFrame = 110;
+        int maxWatchFace = 100;
         watchFaceSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                //watchFaceSlider.setMax(frame.getRadius()-2);
-                //frameSlider.setMin(watchFace.getRadius()+5);
+                watchFaceSlider.setMax(maxWatchFace);
                 watchFace.setRadius(watchFaceSlider.getValue());
-                //TODO: Make the hands follow the watchface size
+                frameSlider.setMax(watchFaceSlider.getValue()+3);
+                frameSlider.setValue(watchFaceSlider.getValue()+3);
                 ChangeHands();
-                watchFaceSlider.setMax(frame.getRadius()-2);
-                frameSlider.setMin(watchFace.getRadius()+5);
-                watchFaceSlider.setMax(frame.getRadius()-2);
-                frameSlider.setMin(watchFace.getRadius()+5);
             }
         });
         frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                frameSlider.setMax(maxFrame);
+                frameSlider.setMin(watchFaceSlider.getValue()+3);
                 frame.setRadius(frameSlider.getValue());
                 backviewFrame.setRadius(frameSlider.getValue());
                 sideviewFrame.setWidth(frameSlider.getValue()*2);
@@ -223,9 +222,7 @@ public class Controller implements Initializable {
         currentTimeBtn.fire();
     }
 
-    private void ChangeSlider() {
-        timeSlider.setValue(hour * 60 + minute);
-    }
+    private void ChangeSlider() {timeSlider.setValue(hour * 60 + minute);}
 
     private void ChangeHands() {
         double minuteHandLength = watchFace.getRadius() * .75;

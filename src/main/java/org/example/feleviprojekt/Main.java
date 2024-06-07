@@ -22,6 +22,5 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.setTitle("Félévi Java projekt: Karóra");
         stage.show();
-
     }
 }

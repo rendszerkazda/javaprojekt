@@ -89,7 +89,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="frameSlider" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <Slider fx:id="frameSlider" min="65.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                     <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                  </children>
                               </HBox>
@@ -100,7 +100,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="strapSlider" min="50.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <Slider fx:id="strapSlider" min="40.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="50.0" />
                                     <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                  </children>
                               </HBox>
@@ -127,7 +127,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="timeSlider" max="1439.0" prefHeight="14.0" prefWidth="151.0" />
+                                    <Slider fx:id="timeSlider" blockIncrement="1.0" max="1439.0" prefHeight="14.0" prefWidth="151.0" />
                                  </children>
                               </HBox>
                            </children>
