@@ -20,9 +20,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="629.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.feleviprojekt.Controller">
+<AnchorPane fx:id="rootAnchor" prefHeight="629.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.feleviprojekt.Controller">
    <children>
-      <MenuBar prefHeight="26.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <MenuBar fx:id="menuBar" prefHeight="26.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Fájl">
             <items>
@@ -46,108 +46,112 @@
           <Menu mnemonicParsing="false" text="Súgó" />
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.5" layoutY="25.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <SplitPane fx:id="mainPane" dividerPositions="0.5" layoutY="25.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.4999999999999999" layoutX="3.0" layoutY="-2.0" prefHeight="184.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <SplitPane fx:id="felsoPane" dividerPositions="0.4999999999999999" prefHeight="184.0" prefWidth="598.0">
+              <items>
+                <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Line fx:id="buckleLine" endX="348.0" endY="145.0" startX="338.0" startY="145.0" stroke="#666666" strokeWidth="3.0" />
+                        <Rectangle fx:id="strap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="60.0" y="122.0" />
+                        <Circle fx:id="frame" centerX="198.0" centerY="147.0" fill="#9ea5ac" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="watchFace" centerX="198.0" centerY="147.0" fill="#f7f7da" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Line fx:id="hourHand" endX="218.0" endY="147.0" startX="198.0" startY="147.0" />
+                        <Line fx:id="minuteHand" endX="198.0" endY="120.0" startX="198.0" startY="147.0" />
+                        <Rectangle fx:id="buckleRec" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" x="335.0" y="122.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane fx:id="sideviewPane" minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="0.0">
+                     <children>
+                        <Rectangle fx:id="sideviewStrap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="4.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="62.0" y="147.0" />
+                        <Rectangle fx:id="sideviewBuckle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="4.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" x="332.0" y="147.0" />
+                        <Rectangle fx:id="sideviewFrame" arcHeight="5.0" arcWidth="5.0" fill="#9ea5ac" height="4.0" stroke="BLACK" strokeType="INSIDE" width="100.0" x="149.0" y="145.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <SplitPane fx:id="alsoPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+              <items>
+                <AnchorPane fx:id="backviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Line fx:id="backviewBuckleLine" endX="356.0" endY="157.0" startX="345.0" startY="157.0" stroke="#666666" strokeWidth="3.0" />
+                        <Rectangle fx:id="backviewStrap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="71.0" y="132.0" />
+                        <Circle fx:id="backviewFrame" centerX="207.0" centerY="157.0" fill="#9ea5ac" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Rectangle fx:id="backviewBuckleRec" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" x="345.0" y="132.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane id="aj" fx:id="configPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="299.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Rectangle fx:id="strap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" layoutX="60.8" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="274.0" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="122.0" />
-                              <Circle fx:id="frame" fill="#9ea5ac" layoutX="198.0" layoutY="147.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                              <Circle fx:id="watchFace" fill="#f7f7da" layoutX="198.0" layoutY="147.0" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
-                              <Line fx:id="hourHand" endX="-78.0" endY="-36.00001525878906" layoutX="276.0" layoutY="168.0" rotate="178.0" startX="-78.0" startY="-21.000015258789062" />
-                              <Line fx:id="minuteHand" endY="-23.000015258789062" layoutX="198.0" layoutY="147.0" startY="-1.52587890625E-5" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="335.0" layoutY="122.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" />
-                              <Line endX="-4.999969482421875" endY="-1.52587890625E-5" layoutX="342.0" layoutY="147.0" startX="11.800018310546875" startY="-1.52587890625E-5" stroke="#666666" strokeWidth="3.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane fx:id="sideviewPane" minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="0.0">
-                           <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#735536" height="4.0" layoutX="62.0" layoutY="147.0" stroke="BLACK" strokeType="INSIDE" width="274.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="4.0" layoutX="332.0" layoutY="147.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ea5ac" height="4.0" layoutX="149.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
-                           </children></AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <SplitPane dividerPositions="0.5" layoutX="190.0" layoutY="14.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane fx:id="backviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <Rectangle fx:id="strap1" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" layoutX="71.0" layoutY="132.0" stroke="BLACK" strokeType="INSIDE" width="274.0" />
-                              <Circle fill="#9ea5ac" layoutX="207.0" layoutY="157.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" layoutX="345.0" layoutY="132.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" />
-                              <Line endX="-4.999969482421875" endY="-1.52587890625E-5" layoutX="352.0" layoutY="157.0" startX="11.800018310546875" startY="-1.52587890625E-5" stroke="#666666" strokeWidth="3.0" />
-                           </children></AnchorPane>
-                      <AnchorPane fx:id="configPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                           <children>
-                              <VBox layoutX="-1.0" layoutY="-1.0" prefHeight="299.0" prefWidth="398.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Számlap">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider fx:id="watchFaceSlider" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="37.0" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Keret">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider fx:id="frameSlider" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <Label prefHeight="18.0" prefWidth="55.0" text="Szíj">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                          <ColorPicker prefHeight="26.0" prefWidth="27.0" />
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
-                                       <children>
-                                          <TextField prefHeight="26.0" prefWidth="125.0" />
-                                          <Label alignment="CENTER" prefHeight="18.0" prefWidth="0.0" text=":">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField prefHeight="26.0" prefWidth="125.0" />
-                                          <Button alignment="CENTER" mnemonicParsing="false" text="Pontos idő">
-                                             <font>
-                                                <Font name="Verdana" size="11.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
+                                    <Label prefHeight="18.0" prefWidth="55.0" text="Számlap">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="watchFaceSlider" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="37.0" />
+                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                  </children>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
-                              </VBox>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="55.0" text="Keret">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="frameSlider" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="55.0" text="Szíj">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="hourTextField" prefHeight="26.0" prefWidth="125.0" />
+                                    <Label alignment="CENTER" prefHeight="18.0" prefWidth="0.0" text=":">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="minuteTextField" prefHeight="26.0" prefWidth="125.0" />
+                                    <Button fx:id="currentTimeBtn" alignment="CENTER" mnemonicParsing="false" text="Pontos idő">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="55.0" text="Idő">
+                                       <font>
+                                          <Font name="Verdana" size="11.0" />
+                                       </font>
+                                    </Label>
+                                    <Slider fx:id="timeSlider" max="1439.0" prefHeight="14.0" prefWidth="151.0" />
+                                 </children>
+                              </HBox>
                            </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
+                           <padding>
+                              <Insets top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
         </items>
       </SplitPane>
    </children>
