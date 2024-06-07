@@ -100,7 +100,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <Slider fx:id="strapSlider" min="50.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                     <ColorPicker prefHeight="26.0" prefWidth="27.0" />
                                  </children>
                               </HBox>

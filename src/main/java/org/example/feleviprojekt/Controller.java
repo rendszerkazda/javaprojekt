@@ -96,6 +96,8 @@ public class Controller implements Initializable {
     @FXML
     private Slider frameSlider;
     @FXML
+    private Slider strapSlider;
+    @FXML
     private Slider timeSlider;
     @FXML
     private Circle watchFace;
@@ -119,23 +121,31 @@ public class Controller implements Initializable {
                 //frameSlider.setMin(watchFace.getRadius()+5);
                 watchFace.setRadius(watchFaceSlider.getValue());
                 //TODO: Make the hands follow the watchface size
-//                minuteHand.setEndY(watchFace.getRadius()-9);
-//                hourHand.setEndY(hourHand.getEndY()+watchFace.getRadius()-14);
-//                hourHand.setEndX(hourHand.getEndX()+watchFace.getRadius()-14);
-                frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-
-                        frame.setRadius(frameSlider.getValue());
-                    }
-                });
+                ChangeHands();
                 watchFaceSlider.setMax(frame.getRadius()-2);
                 frameSlider.setMin(watchFace.getRadius()+5);
                 watchFaceSlider.setMax(frame.getRadius()-2);
                 frameSlider.setMin(watchFace.getRadius()+5);
             }
         });
-
+        frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                frame.setRadius(frameSlider.getValue());
+                backviewFrame.setRadius(frameSlider.getValue());
+                sideviewFrame.setWidth(frameSlider.getValue()*2);
+                WindowChanged();
+            }
+        });
+        strapSlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                strap.setWidth(strapSlider.getValue()*5);
+                sideviewStrap.setWidth(strapSlider.getValue()*5);
+                backviewStrap.setWidth(strapSlider.getValue()*5);
+                WindowChanged();
+            }
+        });
 
         timeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -210,6 +220,7 @@ public class Controller implements Initializable {
             }
         });
         WindowChanged();
+        currentTimeBtn.fire();
     }
 
     private void ChangeSlider() {
@@ -300,4 +311,5 @@ public class Controller implements Initializable {
         sideviewBuckle.setX(sideviewStrap.getX() + sideviewStrap.getWidth() - 1);
         sideviewBuckle.setY(sideviewStrap.getY());
     }
+
 }
