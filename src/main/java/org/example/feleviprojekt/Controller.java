@@ -26,71 +26,47 @@ import java.util.*;
 
 public class Controller implements Initializable {
     @FXML
-    AnchorPane topviewPane;
+    private AnchorPane topviewPane;
     @FXML
-    AnchorPane backviewPane;
+    private AnchorPane backviewPane;
     @FXML
-    AnchorPane sideviewPane;
+    private AnchorPane sideviewPane;
     @FXML
-    AnchorPane configPane;
+    private AnchorPane configPane;
     @FXML
-    AnchorPane rootAnchor;
+    private AnchorPane rootAnchor;
     @FXML
-    SplitPane felsoPane;
+    private SplitPane felsoPane;
     @FXML
-    SplitPane alsoPane;
+    private SplitPane alsoPane;
     @FXML
-    SplitPane mainPane;
+    private SplitPane mainPane;
     @FXML
-    MenuBar menuBar;
+    private MenuBar menuBar;
     @FXML
-    Rectangle buckleRec;
+    private Rectangle buckleRec;
     @FXML
-    Line buckleLine;
+    private Line buckleLine;
     @FXML
-    Rectangle backviewStrap;
+    private Rectangle backviewStrap;
     @FXML
-    Circle backviewFrame;
+    private Circle backviewFrame;
     @FXML
-    Rectangle backviewBuckleRec;
+    private Rectangle backviewBuckleRec;
     @FXML
-    Line backviewBuckleLine;
+    private Line backviewBuckleLine;
     @FXML
-    Rectangle sideviewStrap;
+    private Rectangle sideviewStrap;
     @FXML
-    Rectangle sideviewBuckle;
+    private Rectangle sideviewBuckle;
     @FXML
-    Rectangle sideviewFrame;
+    private Rectangle sideviewFrame;
     @FXML
-    TextField hourTextField;
+    private TextField hourTextField;
     @FXML
-    TextField minuteTextField;
+    private TextField minuteTextField;
     @FXML
-    Button currentTimeBtn;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private int hour = 3, minute = 60;
-
-    public void save() {
-        FileChooser savefile = new FileChooser();
-        savefile.setTitle("Fájl mentése...");
-        savefile.showSaveDialog(stage);
-        //TODO: Implement save function
-    }
-    public void open() {
-        FileChooser openfile = new FileChooser();
-        openfile.setTitle("Fájl megnyitása...");
-        openfile.showOpenDialog(stage);
-        //TODO: Implement open function
-    }
-    public void generate() {
-        //TODO: Implement object random generataion function
-    }
-    public void help() {
-        //TODO: Implement help function
-    }
+    private Button currentTimeBtn;
     @FXML
     private Slider watchFaceSlider;
     @FXML
@@ -109,18 +85,30 @@ public class Controller implements Initializable {
     private Line hourHand;
     @FXML
     private Line minuteHand;
+    //Colorpickers
+    @FXML
+    private ColorPicker watchFaceColor;
+    @FXML
+    private ColorPicker frameColor;
+    @FXML
+    private ColorPicker strapColor;
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    private int hour = 3, minute = 60;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //TODO: Update these properties on every resize
-        int maxFrame = 110;
         int maxWatchFace = 100;
+        //int maxFrame = maxWatchFace+ 3;
         watchFaceSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                //TODO: Fix weird behaviour if adjusting watchface size, after frame size
                 watchFaceSlider.setMax(maxWatchFace);
                 watchFace.setRadius(watchFaceSlider.getValue());
-                frameSlider.setMax(watchFaceSlider.getValue()+3);
+                frameSlider.setMax(watchFaceSlider.getValue()+5);
                 frameSlider.setValue(watchFaceSlider.getValue()+3);
                 ChangeHands();
             }
@@ -128,7 +116,7 @@ public class Controller implements Initializable {
         frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                frameSlider.setMax(maxFrame);
+                frameSlider.setMax(maxWatchFace+5);
                 frameSlider.setMin(watchFaceSlider.getValue()+3);
                 frame.setRadius(frameSlider.getValue());
                 backviewFrame.setRadius(frameSlider.getValue());
@@ -221,7 +209,38 @@ public class Controller implements Initializable {
         WindowChanged();
         currentTimeBtn.fire();
     }
+    public void save() {
+        FileChooser savefile = new FileChooser();
+        savefile.setTitle("Fájl mentése...");
+        savefile.showSaveDialog(stage);
+        //TODO: Implement save function
+    }
+    public void open() {
+        FileChooser openfile = new FileChooser();
+        openfile.setTitle("Fájl megnyitása...");
+        openfile.showOpenDialog(stage);
+        //TODO: Implement open function
+    }
+    public void generate() {
+        //TODO: Implement object random generataion function
+    }
+    public void help() {
+        //TODO: Implement help function
+    }
 
+    public void wfColorPick(){
+        watchFace.setFill(watchFaceColor.getValue());
+    }
+    public void frameColorPick(){
+        frame.setFill(frameColor.getValue());
+        backviewFrame.setFill(frameColor.getValue());
+        sideviewFrame.setFill(frameColor.getValue());
+    }
+    public void strapColorPick(){
+        strap.setFill(strapColor.getValue());
+        backviewStrap.setFill(strapColor.getValue());
+        sideviewStrap.setFill(strapColor.getValue());
+    }
     private void ChangeSlider() {timeSlider.setValue(hour * 60 + minute);}
 
     private void ChangeHands() {

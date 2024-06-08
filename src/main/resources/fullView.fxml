@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
@@ -41,7 +42,7 @@
                      <children>
                         <Line fx:id="buckleLine" endX="348.0" endY="145.0" startX="338.0" startY="145.0" stroke="#666666" strokeWidth="3.0" />
                         <Rectangle fx:id="strap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="60.0" y="122.0" />
-                        <Circle fx:id="frame" centerX="198.0" centerY="147.0" fill="#9ea5ac" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Circle fx:id="frame" centerX="198.0" centerY="147.0" fill="#84888c" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Circle fx:id="watchFace" centerX="198.0" centerY="147.0" fill="#f7f7da" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
                         <Line fx:id="hourHand" endX="218.0" endY="147.0" startX="198.0" startY="147.0" />
                         <Line fx:id="minuteHand" endX="198.0" endY="120.0" startX="198.0" startY="147.0" />
@@ -79,7 +80,10 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="watchFaceSlider" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="37.0" />
-                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
+                                    <ColorPicker fx:id="watchFaceColor" onAction="#wfColorPick" prefHeight="26.0" prefWidth="27.0">
+                                       <value>
+                                          <Color red="0.9686274528503418" green="0.9686274528503418" blue="0.8549019694328308" />
+                                       </value></ColorPicker>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
@@ -90,7 +94,10 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="frameSlider" min="65.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
+                                    <ColorPicker fx:id="frameColor" onAction="#frameColorPick" prefHeight="26.0" prefWidth="27.0">
+                                       <value>
+                                          <Color red="0.5176470875740051" green="0.5333333611488342" blue="0.5490196347236633" />
+                                       </value></ColorPicker>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
@@ -101,7 +108,10 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="strapSlider" min="40.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="50.0" />
-                                    <ColorPicker prefHeight="26.0" prefWidth="27.0" />
+                                    <ColorPicker fx:id="strapColor" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
+                                       <value>
+                                          <Color red="0.45098039507865906" green="0.3333333432674408" blue="0.21176470816135406" />
+                                       </value></ColorPicker>
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
