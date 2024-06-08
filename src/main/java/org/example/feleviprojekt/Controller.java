@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -215,8 +216,23 @@ public class Controller implements Initializable {
         openfile.showOpenDialog(stage);
         //TODO: Implement open function
     }
-    public void generate() {
-        //TODO: Implement object random generataion function
+    public void generateColor() {
+        Random rc = new Random();
+        int[] colors = new int[9];
+        for (int i = 0; i < colors.length; i++) {colors[i] = rc.nextInt(256);}
+        watchFaceColor.setValue(Color.rgb(colors[0], colors[1], colors[2]));
+        frameColor.setValue(Color.rgb(colors[3], colors[4], colors[5]));
+        strapColor.setValue(Color.rgb(colors[6], colors[7], colors[8]));
+        wfColorPick();
+        frameColorPick();
+        strapColorPick();
+    }
+    public void generateShape() {
+        //TODO: Implement random shape size generation
+    }
+    public void generateAll(){
+        generateColor();
+        generateShape();
     }
     public void help() {
         //TODO: Implement help function

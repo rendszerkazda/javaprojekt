@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -29,7 +30,24 @@
                   <MenuItem mnemonicParsing="false" onAction="#open" text="Megnyitás" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Generálás" />
+          <Menu mnemonicParsing="false" text="Generálás">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#generateColor" text="Szín">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#generateShape" text="Forma">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#generateAll" text="Minden">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="SPACE" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
+               </items></Menu>
             <Menu mnemonicParsing="false" text="Nézet" />
           <Menu mnemonicParsing="false" text="Súgó" />
         </menus>
@@ -40,7 +58,7 @@
               <items>
                 <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <Line fx:id="buckleLine" endX="348.0" endY="145.0" startX="338.0" startY="145.0" stroke="#666666" strokeWidth="3.0" />
+                        <Line fx:id="buckleLine" endX="348.5000305175781" endY="147.0" startX="335.0000305175781" startY="147.0" stroke="#666666" strokeWidth="3.0" />
                         <Rectangle fx:id="strap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="60.0" y="122.0" />
                         <Circle fx:id="frame" centerX="198.0" centerY="147.0" fill="#84888c" radius="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Circle fx:id="watchFace" centerX="198.0" centerY="147.0" fill="#f7f7da" radius="37.0" stroke="BLACK" strokeType="INSIDE" />
