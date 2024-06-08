@@ -2,13 +2,10 @@ package org.example.feleviprojekt;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,37 +13,43 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Rotate;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
 public class Controller implements Initializable {
+//region FXML injection
+    //viewPanes
     @FXML
     private AnchorPane topviewPane;
     @FXML
     private AnchorPane backviewPane;
     @FXML
     private AnchorPane sideviewPane;
-    @FXML
-    private AnchorPane configPane;
-    @FXML
-    private AnchorPane rootAnchor;
+    //SplitPanes
     @FXML
     private SplitPane felsoPane;
     @FXML
     private SplitPane alsoPane;
     @FXML
     private SplitPane mainPane;
+    //Shapes
     @FXML
-    private MenuBar menuBar;
+    private Circle watchFace;
+    @FXML
+    private Circle frame;
+    @FXML
+    private Rectangle strap;
     @FXML
     private Rectangle buckleRec;
     @FXML
     private Line buckleLine;
+    @FXML
+    private Line hourHand;
+    @FXML
+    private Line minuteHand;
+    //Backview Shapes
     @FXML
     private Rectangle backviewStrap;
     @FXML
@@ -55,18 +58,21 @@ public class Controller implements Initializable {
     private Rectangle backviewBuckleRec;
     @FXML
     private Line backviewBuckleLine;
+    //Sideview Shapes
     @FXML
     private Rectangle sideviewStrap;
     @FXML
     private Rectangle sideviewBuckle;
     @FXML
     private Rectangle sideviewFrame;
+    //Textfields
     @FXML
     private TextField hourTextField;
     @FXML
     private TextField minuteTextField;
     @FXML
     private Button currentTimeBtn;
+    //Sliders
     @FXML
     private Slider watchFaceSlider;
     @FXML
@@ -75,16 +81,6 @@ public class Controller implements Initializable {
     private Slider strapSlider;
     @FXML
     private Slider timeSlider;
-    @FXML
-    private Circle watchFace;
-    @FXML
-    private Circle frame;
-    @FXML
-    private Rectangle strap;
-    @FXML
-    private Line hourHand;
-    @FXML
-    private Line minuteHand;
     //Colorpickers
     @FXML
     private ColorPicker watchFaceColor;
@@ -92,10 +88,8 @@ public class Controller implements Initializable {
     private ColorPicker frameColor;
     @FXML
     private ColorPicker strapColor;
-
+//endregion
     private Stage stage;
-    private Scene scene;
-    private Parent root;
     private int hour = 3, minute = 60;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
