@@ -150,7 +150,7 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="strapSlider" majorTickUnit="50.0" max="500.0" min="200.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                    <ColorPicker fx:id="strapColor" cacheShape="false" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
+                                    <ColorPicker fx:id="strapColor" focusTraversable="false" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.45098039507865906" green="0.3333333432674408" blue="0.21176470816135406" />
                                        </value></ColorPicker>
@@ -158,13 +158,13 @@
                               </HBox>
                               <HBox alignment="CENTER" layoutX="10.0" layoutY="87.0" prefHeight="38.0" prefWidth="296.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="hourTextField" prefHeight="26.0" prefWidth="125.0" promptText="Óra" />
+                                    <TextField fx:id="hourTextField" focusTraversable="false" prefHeight="26.0" prefWidth="125.0" promptText="Óra" />
                                     <Label alignment="CENTER" prefHeight="18.0" prefWidth="0.0" text=":">
                                        <font>
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="minuteTextField" prefHeight="26.0" prefWidth="125.0" promptText="Perc" />
+                                    <TextField fx:id="minuteTextField" focusTraversable="false" prefHeight="26.0" prefWidth="125.0" promptText="Perc" />
                                     <Button fx:id="currentTimeBtn" alignment="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#exactTime" text="Pontos idő">
                                        <font>
                                           <Font name="Verdana" size="11.0" />

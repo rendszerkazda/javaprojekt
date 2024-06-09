@@ -1,5 +1,9 @@
 package org.example.feleviprojekt;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -11,8 +15,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Rotate;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -148,11 +154,12 @@ public class Controller implements Initializable {
                     hourTextField.setText("23");
                     hour = 23;
                 }
-            } catch (NumberFormatException e) {
-                minuteTextField.setText("0");
+                ChangeSliders();
+                ChangeHands();
+            } catch (Exception e) {
+                hourTextField.setText("0");
+                hour = 0;
             }
-            ChangeSliders();
-            ChangeHands();
         });
         minuteTextField.textProperty().addListener((observable, oldvalue, newvalue) -> {
             try {
@@ -161,11 +168,12 @@ public class Controller implements Initializable {
                     minuteTextField.setText("59");
                     minute = 59;
                 }
-            } catch (NumberFormatException e) {
+                ChangeSliders();
+                ChangeHands();
+            } catch (Exception e) {
                 minuteTextField.setText("0");
+                minute = 0;
             }
-            ChangeSliders();
-            ChangeHands();
         });
         felsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -187,10 +195,12 @@ public class Controller implements Initializable {
                 WindowChanged();
             }
         });
+
         //First open stuff
         WindowChanged();
         currentTimeBtn.fire();
         generateAll();
+        Animate(2);
     }
     public void save() {
         try {
@@ -249,6 +259,7 @@ public class Controller implements Initializable {
                 wfColorPick();
                 frameColorPick();
                 strapColorPick();
+                Animate(1);
             }
 
         }
@@ -303,6 +314,7 @@ public class Controller implements Initializable {
         hour = currentDate.getHours();
         minute = currentDate.getMinutes();
         ChangeSliders();
+        Animate(1);
     }
     public void resetView(){
         mainPane.setDividerPositions(0.5);
@@ -331,11 +343,10 @@ public class Controller implements Initializable {
         mainPane.setScaleY(1.5);
         new Thread(() -> {
             try {
-                Thread.sleep(20); // Wait for the UI updates to be processed
+                Thread.sleep(20); // Wait for the UI updates to be processed, due to centering issues
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             Platform.runLater(() -> {
                 WindowChanged();
             });
@@ -478,4 +489,22 @@ public class Controller implements Initializable {
         sideviewBuckle.setX(sideviewStrap.getX() + sideviewStrap.getWidth() - 1);
         sideviewBuckle.setY(sideviewStrap.getY());
     }
+    private void Animate(int CycleCount){
+        Rotate mrotation = new Rotate();
+        Rotate hrotation = new Rotate();
+        mrotation.pivotXProperty().bind(minuteHand.startXProperty());
+        mrotation.pivotYProperty().bind(minuteHand.startYProperty());
+        hrotation.pivotXProperty().bind(hourHand.startXProperty());
+        hrotation.pivotYProperty().bind(hourHand.startYProperty());
+        minuteHand.getTransforms().add(mrotation);
+        hourHand.getTransforms().add(hrotation);
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(mrotation.angleProperty(), 0), new KeyValue(hrotation.angleProperty(), 0)),
+                new KeyFrame(Duration.seconds(1), new KeyValue(mrotation.angleProperty(), 360)),
+                new KeyFrame(Duration.seconds(1.2), new KeyValue(hrotation.angleProperty(), 360)));
+        timeline.setCycleCount(CycleCount);
+        timeline.play();
+
+    }
+
 }
