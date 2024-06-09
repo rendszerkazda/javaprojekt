@@ -1,13 +1,18 @@
 package org.example.feleviprojekt;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventDispatcher;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -245,6 +250,70 @@ public class Controller implements Initializable {
         hour = currentDate.getHours();
         minute = currentDate.getMinutes();
         ChangeSliders();
+    }
+
+    public void resetView(){
+        mainPane.setDividerPositions(0.5);
+        alsoPane.setDividerPositions(0.5);
+        felsoPane.setDividerPositions(0.5);
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(20); // Wait for the UI updates to be processed
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> {
+                WindowChanged();
+            });
+        }).start();
+    }
+
+    public void topFocus(){
+        mainPane.setDividerPositions(1);
+        alsoPane.setDividerPositions(1);
+        new Thread(() -> {
+            try {
+                Thread.sleep(20); // Wait for the UI updates to be processed
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> {
+                WindowChanged();
+            });
+        }).start();
+    }
+    public void backFocus(){
+        mainPane.setDividerPositions(0);
+        alsoPane.setDividerPositions(1);
+        new Thread(() -> {
+            try {
+                Thread.sleep(20); // Wait for the UI updates to be processed
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> {
+                WindowChanged();
+            });
+        }).start();
+    }
+    public void sideFocus(){
+        mainPane.setDividerPositions(1);
+        alsoPane.setDividerPositions(0);
+        new Thread(() -> {
+            try {
+                Thread.sleep(20); // Wait for the UI updates to be processed
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            Platform.runLater(() -> {
+                WindowChanged();
+            });
+        }).start();
     }
     public void wfColorPick(){
         watchFace.setFill(watchFaceColor.getValue());
