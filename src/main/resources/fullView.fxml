@@ -122,7 +122,7 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="watchFaceSlider" blockIncrement="1.0" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                    <ColorPicker fx:id="watchFaceColor" onAction="#wfColorPick" prefHeight="26.0" prefWidth="27.0">
+                                    <ColorPicker fx:id="watchFaceColor" focusTraversable="false" onAction="#wfColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.9686274528503418" green="0.9686274528503418" blue="0.8549019694328308" />
                                        </value></ColorPicker>
@@ -136,7 +136,7 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="frameSlider" blockIncrement="1.0" min="65.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                    <ColorPicker fx:id="frameColor" onAction="#frameColorPick" prefHeight="26.0" prefWidth="27.0">
+                                    <ColorPicker fx:id="frameColor" focusTraversable="false" onAction="#frameColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.5176470875740051" green="0.5333333611488342" blue="0.5490196347236633" />
                                        </value></ColorPicker>
@@ -150,7 +150,7 @@
                                        </font>
                                     </Label>
                                     <Slider fx:id="strapSlider" majorTickUnit="50.0" max="500.0" min="200.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
-                                    <ColorPicker fx:id="strapColor" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
+                                    <ColorPicker fx:id="strapColor" cacheShape="false" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.45098039507865906" green="0.3333333432674408" blue="0.21176470816135406" />
                                        </value></ColorPicker>

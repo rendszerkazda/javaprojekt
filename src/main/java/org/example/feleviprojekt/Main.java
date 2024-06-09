@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.net.URL;
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -17,7 +19,8 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fullView.fxml"));
         Scene scene = new Scene(root);
-        Image icon = new Image("file:src/karoralogo.jpg");
+        URL url = getClass().getResource("/karoralogo.jpg");
+        Image icon = new Image(url.toString());
         stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.setTitle("Félévi Java projekt: Karóra");

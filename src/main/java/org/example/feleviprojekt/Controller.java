@@ -3,16 +3,9 @@ package org.example.feleviprojekt;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventDispatcher;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -20,6 +13,9 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.*;
 
@@ -200,11 +196,53 @@ public class Controller implements Initializable {
         savefile.showSaveDialog(stage);
         //TODO: Implement save function
     }
-    public void open() {
-        FileChooser openfile = new FileChooser();
-        openfile.setTitle("Fájl megnyitása...");
-        openfile.showOpenDialog(stage);
-        //TODO: Implement open function
+    public void open()  {
+        double watchFaceRadius = 0;
+        double frameRadius = 0;
+        double strapWidth = 0;
+        String[] colors = new String[3];
+        try {
+            FileChooser openfile = new FileChooser();
+            Scanner file = new Scanner(new FileInputStream(openfile.showOpenDialog(stage)));
+            openfile.setTitle("Fájl megnyitása...");
+            while(file.hasNextLine()){
+                String[] line = file.nextLine().split(" ");
+                watchFaceRadius = Double.parseDouble(line[0]);
+                colors[0] = line[1];
+                line = file.nextLine().split(" ");
+                frameRadius = Double.parseDouble(line[0]);
+                colors[1] = line[1];
+                line = file.nextLine().split(" ");
+                strapWidth = Double.parseDouble(line[0]);
+                colors[2] = line[1];
+                line = file.nextLine().split(" ");
+                hour = Integer.parseInt(line[0]) / 60;
+                minute = Integer.parseInt(line[0]) % 60;
+
+                if (watchFaceRadius == 0 || frameRadius == 0 || strapWidth == 0) {
+                    throw new Exception(
+                        "A fájlban hibás adatok találhatók! " +
+                        "Az óra alapértelmezett értékekre lett állítva!"
+                    );
+                }
+                file.close();
+                ChangeSliders(watchFaceRadius,frameRadius,strapWidth);
+                ChangeSliders();
+                watchFaceColor.setValue(Color.valueOf(colors[0]));
+                frameColor.setValue(Color.valueOf(colors[1]));
+                strapColor.setValue(Color.valueOf(colors[2]));
+                wfColorPick();
+                frameColorPick();
+                strapColorPick();
+            }
+
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("A fájl nem található!");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     public void generateColor() {
         Random rc = new Random();
@@ -251,7 +289,6 @@ public class Controller implements Initializable {
         minute = currentDate.getMinutes();
         ChangeSliders();
     }
-
     public void resetView(){
         mainPane.setDividerPositions(0.5);
         alsoPane.setDividerPositions(0.5);
@@ -269,7 +306,6 @@ public class Controller implements Initializable {
             });
         }).start();
     }
-
     public void topFocus(){
         mainPane.setDividerPositions(1);
         alsoPane.setDividerPositions(1);
