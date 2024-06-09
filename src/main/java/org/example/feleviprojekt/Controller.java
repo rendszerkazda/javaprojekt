@@ -14,8 +14,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.*;
 
@@ -191,10 +193,22 @@ public class Controller implements Initializable {
         generateAll();
     }
     public void save() {
-        FileChooser savefile = new FileChooser();
-        savefile.setTitle("Fájl mentése...");
-        savefile.showSaveDialog(stage);
-        //TODO: Implement save function
+        try {
+            FileChooser savefile = new FileChooser();
+            savefile.setTitle("Fájl mentése...");
+            savefile.setInitialFileName("karora"+ timeSlider.getValue()+ ".ora");
+            savefile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            FileOutputStream file = new FileOutputStream(savefile.showSaveDialog(stage));
+            file.write((watchFace.getRadius() + " " + watchFaceColor.getValue() + "\n").getBytes());
+            file.write((frame.getRadius() + " " + frameColor.getValue() + "\n").getBytes());
+            file.write((strap.getWidth() + " " + strapColor.getValue() + "\n").getBytes());
+            file.write((hour * 60 + minute + "\n").getBytes());
+            file.close();
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
     public void open()  {
         double watchFaceRadius = 0;
@@ -204,6 +218,7 @@ public class Controller implements Initializable {
         try {
             FileChooser openfile = new FileChooser();
             Scanner file = new Scanner(new FileInputStream(openfile.showOpenDialog(stage)));
+            openfile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
             openfile.setTitle("Fájl megnyitása...");
             while(file.hasNextLine()){
                 String[] line = file.nextLine().split(" ");
