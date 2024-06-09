@@ -196,7 +196,7 @@ public class Controller implements Initializable {
         try {
             FileChooser savefile = new FileChooser();
             savefile.setTitle("Fájl mentése...");
-            savefile.setInitialFileName("karora"+ timeSlider.getValue()+ ".ora");
+            savefile.setInitialFileName("karora"+ (int)timeSlider.getValue() + ".ora");
             savefile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
             FileOutputStream file = new FileOutputStream(savefile.showSaveDialog(stage));
             file.write((watchFace.getRadius() + " " + watchFaceColor.getValue() + "\n").getBytes());
@@ -217,9 +217,9 @@ public class Controller implements Initializable {
         String[] colors = new String[3];
         try {
             FileChooser openfile = new FileChooser();
-            Scanner file = new Scanner(new FileInputStream(openfile.showOpenDialog(stage)));
             openfile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
             openfile.setTitle("Fájl megnyitása...");
+            Scanner file = new Scanner(new FileInputStream(openfile.showOpenDialog(stage)));
             while(file.hasNextLine()){
                 String[] line = file.nextLine().split(" ");
                 watchFaceRadius = Double.parseDouble(line[0]);
