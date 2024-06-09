@@ -26,8 +26,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fájl">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#save" text="Mentés" />
-                  <MenuItem mnemonicParsing="false" onAction="#open" text="Megnyitás" />
+              <MenuItem mnemonicParsing="false" onAction="#save" text="Mentés">
+                     <accelerator>
+                        <KeyCodeCombination alt="DOWN" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#open" text="Megnyitás">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Generálás">
@@ -39,7 +45,7 @@
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#generateShape" text="Forma">
                      <accelerator>
-                        <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                        <KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="ANY" />
                      </accelerator>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" onAction="#generateAll" text="Minden">
@@ -48,8 +54,23 @@
                      </accelerator>
                   </MenuItem>
                </items></Menu>
-            <Menu mnemonicParsing="false" text="Nézet" />
-          <Menu mnemonicParsing="false" text="Súgó" />
+            <Menu mnemonicParsing="false" text="Nézet">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#exactTime" text="Pontos idő visszaállítása">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Átméretezés visszaállítása">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
+               </items></Menu>
+          <Menu mnemonicParsing="false" onAction="#help" text="Súgó">
+               <accelerator>
+                  <KeyCodeCombination alt="UP" code="H" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+               </accelerator></Menu>
         </menus>
       </MenuBar>
       <SplitPane fx:id="mainPane" dividerPositions="0.5" layoutY="25.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
@@ -97,7 +118,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="watchFaceSlider" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="37.0" />
+                                    <Slider fx:id="watchFaceSlider" blockIncrement="1.0" min="15.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                     <ColorPicker fx:id="watchFaceColor" onAction="#wfColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.9686274528503418" green="0.9686274528503418" blue="0.8549019694328308" />
@@ -111,7 +132,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="frameSlider" min="65.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
+                                    <Slider fx:id="frameSlider" blockIncrement="1.0" min="65.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                     <ColorPicker fx:id="frameColor" onAction="#frameColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.5176470875740051" green="0.5333333611488342" blue="0.5490196347236633" />
@@ -125,7 +146,7 @@
                                           <Font name="Verdana" size="11.0" />
                                        </font>
                                     </Label>
-                                    <Slider fx:id="strapSlider" min="40.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" value="50.0" />
+                                    <Slider fx:id="strapSlider" majorTickUnit="50.0" max="500.0" min="200.0" prefHeight="14.0" prefWidth="151.0" showTickMarks="true" />
                                     <ColorPicker fx:id="strapColor" onAction="#strapColorPick" prefHeight="26.0" prefWidth="27.0">
                                        <value>
                                           <Color red="0.45098039507865906" green="0.3333333432674408" blue="0.21176470816135406" />
@@ -141,7 +162,7 @@
                                        </font>
                                     </Label>
                                     <TextField fx:id="minuteTextField" prefHeight="26.0" prefWidth="125.0" promptText="Perc" />
-                                    <Button fx:id="currentTimeBtn" alignment="CENTER" mnemonicParsing="false" text="Pontos idő">
+                                    <Button fx:id="currentTimeBtn" alignment="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#exactTime" text="Pontos idő">
                                        <font>
                                           <Font name="Verdana" size="11.0" />
                                        </font>

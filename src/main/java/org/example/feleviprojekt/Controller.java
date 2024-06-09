@@ -6,9 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -94,16 +93,15 @@ public class Controller implements Initializable {
     private int hour = 3, minute = 60;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //TODO: Update these properties on every resize
-        int maxWatchFace = 100;
-        //int maxFrame = maxWatchFace+ 3;
+        int maxWatchFace = 70;
+        int maxFrame = maxWatchFace + 3;
+        watchFaceSlider.setMax(maxWatchFace);
+        frameSlider.setMax(maxWatchFace+5);
         watchFaceSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                //TODO: Fix weird behaviour if adjusting watchface size, after frame size
-                watchFaceSlider.setMax(maxWatchFace);
-                watchFace.setRadius(watchFaceSlider.getValue());
                 frameSlider.setMax(watchFaceSlider.getValue()+5);
+                watchFace.setRadius(watchFaceSlider.getValue());
                 frameSlider.setValue(watchFaceSlider.getValue()+3);
                 ChangeHands();
             }
@@ -111,8 +109,9 @@ public class Controller implements Initializable {
         frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                frameSlider.setMax(maxWatchFace+5);
-                frameSlider.setMin(watchFaceSlider.getValue()+3);
+                frameSlider.setMin(watchFaceSlider.getValue()+1);
+                int maxFrameSize = (int) ((watchFaceSlider.getValue()<30) ? (watchFace.getRadius()+3) : watchFace.getRadius() + 25);
+                frameSlider.setMax(maxFrameSize);
                 frame.setRadius(frameSlider.getValue());
                 backviewFrame.setRadius(frameSlider.getValue());
                 sideviewFrame.setWidth(frameSlider.getValue()*2);
@@ -122,13 +121,12 @@ public class Controller implements Initializable {
         strapSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                strap.setWidth(strapSlider.getValue()*5);
-                sideviewStrap.setWidth(strapSlider.getValue()*5);
-                backviewStrap.setWidth(strapSlider.getValue()*5);
+                strap.setWidth(strapSlider.getValue());
+                sideviewStrap.setWidth(strapSlider.getValue());
+                backviewStrap.setWidth(strapSlider.getValue());
                 WindowChanged();
             }
         });
-
         timeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -140,7 +138,6 @@ public class Controller implements Initializable {
                 ChangeHands();
             }
         });
-
         hourTextField.textProperty().addListener((observable, oldvalue, newvalue) -> {
             try {
                 hour = Integer.parseInt(hourTextField.getText());
@@ -151,10 +148,9 @@ public class Controller implements Initializable {
             } catch (NumberFormatException e) {
                 minuteTextField.setText("0");
             }
-            ChangeSlider();
+            ChangeSliders();
             ChangeHands();
         });
-
         minuteTextField.textProperty().addListener((observable, oldvalue, newvalue) -> {
             try {
                 minute = Integer.parseInt(minuteTextField.getText());
@@ -165,20 +161,9 @@ public class Controller implements Initializable {
             } catch (NumberFormatException e) {
                 minuteTextField.setText("0");
             }
-            ChangeSlider();
+            ChangeSliders();
             ChangeHands();
         });
-
-        currentTimeBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                Date currentDate = Calendar.getInstance(TimeZone.getDefault()).getTime();
-                hour = currentDate.getHours();
-                minute = currentDate.getMinutes();
-                ChangeSlider();
-            }
-        });
-
         felsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -186,7 +171,6 @@ public class Controller implements Initializable {
                 WindowChanged();
             }
         });
-
         alsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -194,15 +178,16 @@ public class Controller implements Initializable {
                 WindowChanged();
             }
         });
-
         mainPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 WindowChanged();
             }
         });
+        //First open stuff
         WindowChanged();
         currentTimeBtn.fire();
+        generateAll();
     }
     public void save() {
         FileChooser savefile = new FileChooser();
@@ -228,7 +213,25 @@ public class Controller implements Initializable {
         strapColorPick();
     }
     public void generateShape() {
-        //TODO: Implement random shape size generation
+        Random rn = new Random();
+        final double maxFace = watchFaceSlider.getMax();
+        final double maxFrame = frameSlider.getMax();
+        final double maxStrap = strapSlider.getMax();
+        final double minFace = watchFaceSlider.getMin();
+        final double minFrame = frameSlider.getMin();
+        final double minStrap = strapSlider.getMin();
+        double watchFaceRadius = rn.nextDouble(minFace,maxFace);
+        double frameRadius = rn.nextDouble(minFrame,maxFrame);
+        double strapWidth = rn.nextDouble(minStrap,maxStrap);
+        watchFace.setRadius(watchFaceRadius);
+        frame.setRadius(frameRadius);
+        backviewFrame.setRadius(frameRadius);
+        sideviewFrame.setWidth(frameRadius*2);
+        strap.setWidth(strapWidth);
+        sideviewStrap.setWidth(strapWidth);
+        backviewStrap.setWidth(strapWidth);
+        ChangeSliders(watchFaceRadius,frameRadius,strapWidth);
+        WindowChanged();
     }
     public void generateAll(){
         generateColor();
@@ -237,7 +240,12 @@ public class Controller implements Initializable {
     public void help() {
         //TODO: Implement help function
     }
-
+    public void exactTime(){
+        Date currentDate = Calendar.getInstance(TimeZone.getDefault()).getTime();
+        hour = currentDate.getHours();
+        minute = currentDate.getMinutes();
+        ChangeSliders();
+    }
     public void wfColorPick(){
         watchFace.setFill(watchFaceColor.getValue());
     }
@@ -251,8 +259,13 @@ public class Controller implements Initializable {
         backviewStrap.setFill(strapColor.getValue());
         sideviewStrap.setFill(strapColor.getValue());
     }
-    private void ChangeSlider() {timeSlider.setValue(hour * 60 + minute);}
-
+    private void ChangeSliders(){timeSlider.setValue(hour * 60 + minute);}
+    private void ChangeSliders(double watchFaceRadius, double frameRadius, double strapWidth) {
+        timeSlider.setValue(hour * 60 + minute);
+        watchFaceSlider.setValue(watchFaceRadius);
+        frameSlider.setValue(frameRadius);
+        strapSlider.setValue(strapWidth);
+    }
     private void ChangeHands() {
         double minuteHandLength = watchFace.getRadius() * .75;
         double hourHandLength = watchFace.getRadius() * .35;
@@ -272,7 +285,6 @@ public class Controller implements Initializable {
         hourHand.setEndX(hourHand.getStartX() + hourHandLength * Math.sin(Math.toRadians(hourAngle)));
         hourHand.setEndY(hourHand.getStartY() - hourHandLength * Math.cos(Math.toRadians(hourAngle)));
     }
-
     private void WindowChanged() {
         // TODO: put it into separate functions (like: topViewRedraw or something like that)
         //
@@ -337,5 +349,4 @@ public class Controller implements Initializable {
         sideviewBuckle.setX(sideviewStrap.getX() + sideviewStrap.getWidth() - 1);
         sideviewBuckle.setY(sideviewStrap.getY());
     }
-
 }
