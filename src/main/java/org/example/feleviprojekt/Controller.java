@@ -308,10 +308,13 @@ public class Controller implements Initializable {
         mainPane.setDividerPositions(0.5);
         alsoPane.setDividerPositions(0.5);
         felsoPane.setDividerPositions(0.5);
-
+        alsoPane.setScaleX(1);
+        alsoPane.setScaleY(1);
+        mainPane.setScaleX(1);
+        mainPane.setScaleY(1);
         new Thread(() -> {
             try {
-                Thread.sleep(20); // Wait for the UI updates to be processed
+                Thread.sleep(50); // Wait for the UI updates to be processed
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -324,6 +327,8 @@ public class Controller implements Initializable {
     public void topFocus(){
         mainPane.setDividerPositions(1);
         alsoPane.setDividerPositions(1);
+        mainPane.setScaleX(1.5);
+        mainPane.setScaleY(1.5);
         new Thread(() -> {
             try {
                 Thread.sleep(20); // Wait for the UI updates to be processed
@@ -339,6 +344,8 @@ public class Controller implements Initializable {
     public void backFocus(){
         mainPane.setDividerPositions(0);
         alsoPane.setDividerPositions(1);
+        alsoPane.setScaleX(1.5);
+        alsoPane.setScaleY(1.5);
         new Thread(() -> {
             try {
                 Thread.sleep(20); // Wait for the UI updates to be processed
@@ -354,6 +361,8 @@ public class Controller implements Initializable {
     public void sideFocus(){
         mainPane.setDividerPositions(1);
         alsoPane.setDividerPositions(0);
+        mainPane.setScaleX(1.5);
+        mainPane.setScaleY(1.5);
         new Thread(() -> {
             try {
                 Thread.sleep(20); // Wait for the UI updates to be processed
