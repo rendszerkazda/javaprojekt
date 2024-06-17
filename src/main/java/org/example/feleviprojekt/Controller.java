@@ -28,6 +28,13 @@ import java.net.URL;
 import java.util.*;
 
 public class Controller implements Initializable {
+    /**
+     * Controller class for the JavaFX application.
+     * This class is responsible for handling the user input and updating the view.
+     * It is also responsible for the animation of the clock hands.
+     * The class implements the Initializable interface, which means that the initialize method will be called
+     * when the FXML file is loaded.
+     */
 //region FXML injection
     //viewPanes
     @FXML
@@ -197,10 +204,11 @@ public class Controller implements Initializable {
         });
 
         //First open stuff
-        WindowChanged();
         currentTimeBtn.fire();
         generateAll();
         Animate(2);
+        WindowChanged();
+        resetView();
     }
     public void save() {
         try {
@@ -267,7 +275,11 @@ public class Controller implements Initializable {
             System.out.println("A fájl nem található!");
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl beolvasása közben!");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
     }
     public void generateColor() {
@@ -307,7 +319,40 @@ public class Controller implements Initializable {
         generateShape();
     }
     public void help() {
-        //TODO: Implement help function
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Súgó");
+        alert.setHeaderText("JaWatch alkalmazás súgó");
+        alert.setContentText("Az alkalmazás segítségével egy karórát lehet testre szabni.\n" +
+                "A jobb lenti ablakban található csúszkák segítségével lehet méretet és színeket változtatni komponensenként. " +
+                "Az óramutatók a pontos időt mutatják, a program indításának vagy gomb megnyomásának pillanatában.\n" +
+                "Az ablakok átméretezhetőek, a felső, alsó és oldalsó nézeteket is lehet megtekinteni, az abblakra kattintással vagy gyorsgombbal\n" +
+                "A fájl menüben lehet menteni és betölteni a karórát. " +
+                "A súgó menüben található a gyorsgombok listája.\n" +
+                "Az alkalmazás a JavaFX könyvtárat használja.\n" +
+                "A programot készítette: Kazda  Adrián Zsolt és Hunyadvári Ádám Radó\n" +
+                "A program az Objektumorientált Programozás nevű tárgy félév végi követelményeként készült.\n" +
+                "A program verziója: 1.0\n" +
+                "Győr, Széchenyi István Egyetem 2024.");
+        alert.showAndWait();
+    }
+    public void hotKeys() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Súgó");
+        alert.setHeaderText("Gyorsgombok");
+        alert.setContentText(
+                "Fájl mentése: CTRL + S\n" +
+                "Fájl megnyitása: CTRL + O\n" +
+                "Óra generálása: SPACE\n" +
+                "Színek generálása: C\n" +
+                "Méretek generálása: F\n" +
+                "Pontos idő beállítása: T\n" +
+                "Átméretezés alapértelmezettre: R\n" +
+                "Felülnézet: F1\n" +
+                "Oldalnézet: F2\n" +
+                "Alulnézet: F3\n" +
+                "Súgó: H\n" +
+                "Gyorsgombok: K");
+        alert.showAndWait();
     }
     public void exactTime(){
         Date currentDate = Calendar.getInstance(TimeZone.getDefault()).getTime();
@@ -426,66 +471,50 @@ public class Controller implements Initializable {
         hourHand.setEndY(hourHand.getStartY() - hourHandLength * Math.cos(Math.toRadians(hourAngle)));
     }
     private void WindowChanged() {
-        // TODO: put it into separate functions (like: topViewRedraw or something like that)
-        //
         // Felülnézet
-        //
         // Keret
         frame.setCenterX(topviewPane.getWidth() / 2);
         frame.setCenterY(topviewPane.getHeight() / 2);
-
         // Számlap
         watchFace.setCenterX(topviewPane.getWidth() / 2);
         watchFace.setCenterY(topviewPane.getHeight() / 2);
-
         // Szíj
         strap.setX(topviewPane.getWidth() / 2 - strap.getWidth() / 2);
         strap.setY(topviewPane.getHeight() / 2 - strap.getHeight() / 2);
-
-        ChangeHands();
-
+        ChangeHands(); // Óramutatók pozícióinak frissítése
         // Csat
         buckleRec.setX(strap.getX() + strap.getWidth());
         buckleRec.setY(strap.getY());
-
         // Csat pöcök
         buckleLine.setStartX(strap.getX() + strap.getWidth());
         buckleLine.setStartY(strap.getY() + buckleRec.getHeight() / 2);
         buckleLine.setEndX(buckleLine.getStartX() + buckleRec.getWidth() / 3);
         buckleLine.setEndY(buckleLine.getStartY());
 
-        //
         // Hátoldali nézet
-        //
         // Keret
         backviewFrame.setCenterX(backviewPane.getWidth() / 2);
         backviewFrame.setCenterY(backviewPane.getHeight() / 2);
-
         // Szíj
         backviewStrap.setX(backviewPane.getWidth() / 2 - backviewStrap.getWidth() / 2);
         backviewStrap.setY(backviewPane.getHeight() / 2 - backviewStrap.getHeight() / 2);
-
         // Csat
         backviewBuckleRec.setX(backviewStrap.getX() + backviewStrap.getWidth());
         backviewBuckleRec.setY(backviewStrap.getY());
-
         // Csat pöcök
         backviewBuckleLine.setStartX(backviewStrap.getX() + backviewStrap.getWidth());
         backviewBuckleLine.setStartY(backviewStrap.getY() + backviewBuckleRec.getHeight() / 2);
         backviewBuckleLine.setEndX(backviewBuckleLine.getStartX() + backviewBuckleRec.getWidth() / 3);
         backviewBuckleLine.setEndY(backviewBuckleLine.getStartY());
 
-        //
         // Oldalnézet
-        //
         // Szíj
         sideviewStrap.setX(sideviewPane.getWidth() / 2 - sideviewStrap.getWidth() / 2);
         sideviewStrap.setY(sideviewPane.getHeight() / 2 - sideviewStrap.getHeight() / 2);
-
         // Keret
-        sideviewFrame.setY(sideviewStrap.getY() - sideviewFrame.getHeight());
+        sideviewFrame.setY(sideviewStrap.getY() - sideviewFrame.getHeight()+3);
         sideviewFrame.setX(sideviewPane.getWidth() / 2 - sideviewFrame.getWidth() / 2);
-
+        // Csat
         sideviewBuckle.setX(sideviewStrap.getX() + sideviewStrap.getWidth() - 1);
         sideviewBuckle.setY(sideviewStrap.getY());
     }
@@ -506,5 +535,4 @@ public class Controller implements Initializable {
         timeline.play();
 
     }
-
 }
