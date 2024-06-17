@@ -3,11 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ColorPicker?>
-<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.SplitPane?>
@@ -66,6 +66,11 @@
                         <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="ANY" />
                      </accelerator>
                   </MenuItem>
+                  <RadioMenuItem fx:id="sizeShow" mnemonicParsing="false" onAction="#toggleSize" text="Méretek mutatása">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="M" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </RadioMenuItem>
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Generálás">
@@ -221,76 +226,6 @@
               </items>
             </SplitPane>
         </items>
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                  <Menu mnemonicParsing="false" text="Fájl">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#save" text="Mentés">
-                           <accelerator>
-                              <KeyCodeCombination alt="DOWN" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#open" text="Megnyitás">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Nézet">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#topFocus" text="Felsőnézet">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="F1" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#sideFocus" text="Oldalnézet">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="F2" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#backFocus" text="Alsónézet">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="F3" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#exactTime" text="Pontos idő visszaállítása">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#resetView" text="Átméretezés visszaállítása">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="R" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Generálás">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#generateColor" text="Szín">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="C" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#generateShape" text="Forma">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="F" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#generateAll" text="Minden">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="SPACE" control="UP" meta="UP" shift="UP" shortcut="ANY" />
-                           </accelerator>
-                        </MenuItem>
-                     </items>
-                  </Menu>
-              </items>
-            </ContextMenu>
-         </contextMenu>
       </SplitPane>
    </children>
 </AnchorPane>

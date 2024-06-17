@@ -31,11 +31,12 @@ public class Controller implements Initializable {
     /**
      * Controller class for the JavaFX application.
      * This class is responsible for handling the user input and updating the view.
-     * It is also responsible for the animation of the clock hands.
      * The class implements the Initializable interface, which means that the initialize method will be called
      * when the FXML file is loaded.
      */
 //region FXML injection
+    @FXML
+    private RadioMenuItem sizeShow;
     //viewPanes
     @FXML
     private AnchorPane topviewPane;
@@ -203,7 +204,7 @@ public class Controller implements Initializable {
             }
         });
 
-        //First open stuff
+        //Startup
         currentTimeBtn.fire();
         generateAll();
         Animate(2);
@@ -251,8 +252,6 @@ public class Controller implements Initializable {
                 line = file.nextLine().split(" ");
                 hour = Integer.parseInt(line[0]) / 60;
                 minute = Integer.parseInt(line[0]) % 60;
-
-                file.close();
                 ChangeSliders(watchFaceRadius,frameRadius,strapWidth);
                 ChangeSliders();
                 watchFaceColor.setValue(Color.valueOf(colors[0]));
@@ -263,13 +262,12 @@ public class Controller implements Initializable {
                 strapColorPick();
                 Animate(1);
             }
-
+            file.close();
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba történt a fájl beolvasása közben!");
-            alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
     }
@@ -316,7 +314,7 @@ public class Controller implements Initializable {
         alert.setContentText("Az alkalmazás segítségével egy karórát lehet testre szabni.\n" +
                 "A jobb lenti ablakban található csúszkák segítségével lehet méretet és színeket változtatni komponensenként. " +
                 "Az óramutatók a pontos időt mutatják, a program indításának vagy gomb megnyomásának pillanatában.\n" +
-                "Az ablakok átméretezhetőek, a felső, alsó és oldalsó nézeteket is lehet megtekinteni, az abblakra kattintással vagy gyorsgombbal\n" +
+                "Az ablakok átméretezhetőek, a felső, alsó és oldalsó nézeteket is lehet megtekinteni, az ablakra kattintással vagy gyorsgombbal\n" +
                 "A fájl menüben lehet menteni és betölteni a karórát. " +
                 "A súgó menüben található a gyorsgombok listája.\n" +
                 "Az alkalmazás a JavaFX könyvtárat használja.\n" +
@@ -338,6 +336,7 @@ public class Controller implements Initializable {
                 "Méretek generálása: F\n" +
                 "Pontos idő beállítása: T\n" +
                 "Átméretezés alapértelmezettre: R\n" +
+                "Méretek mutatása: M\n" +
                 "Felülnézet: F1\n" +
                 "Oldalnézet: F2\n" +
                 "Alulnézet: F3\n" +
@@ -351,6 +350,26 @@ public class Controller implements Initializable {
         minute = currentDate.getMinutes();
         ChangeSliders();
         Animate(1);
+    }
+    public void toggleSize(){
+        if (!sizeShow.isSelected()) { //Azért fordítva, mert a isSelected a következő állapotot mutatja (a kattintással már megváltozott, mielőtt a metódus lefutna)
+            sizeShow.setText("Méretek mutatása");
+            watchFaceSlider.showTickLabelsProperty().setValue(false);
+            frameSlider.showTickLabelsProperty().setValue(false);
+            strapSlider.showTickLabelsProperty().setValue(false);
+        }
+        else {
+            sizeShow.setText("Méretek elrejtése");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Méretek");
+            alert.setHeaderText("Szíj szélessége: " + strap.getWidth() + " px\n" +
+                    "Számlap átmérője: " + watchFace.getRadius() * 2 + " px\n" +
+                    "Keret átmérője: " + frame.getRadius() * 2 + " px");
+            alert.showAndWait();
+            watchFaceSlider.showTickLabelsProperty().setValue(true);
+            frameSlider.showTickLabelsProperty().setValue(true);
+            strapSlider.showTickLabelsProperty().setValue(true);
+        }
     }
     public void resetView(){
         mainPane.setDividerPositions(0.5);

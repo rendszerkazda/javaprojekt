@@ -23,7 +23,7 @@ public class Main extends Application {
         Image icon = new Image(url.toString());
         stage.getIcons().add(icon);
         stage.setScene(scene);
-        stage.setTitle("Félévi Java projekt: Karóra");
+        stage.setTitle("JaWatch");
         stage.show();
     }
 }
