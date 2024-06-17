@@ -360,15 +360,15 @@ public class Controller implements Initializable {
         }
         else {
             sizeShow.setText("Méretek elrejtése");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Méretek");
-            alert.setHeaderText("Szíj szélessége: " + strap.getWidth() + " px\n" +
-                    "Számlap átmérője: " + watchFace.getRadius() * 2 + " px\n" +
-                    "Keret átmérője: " + frame.getRadius() * 2 + " px");
-            alert.showAndWait();
             watchFaceSlider.showTickLabelsProperty().setValue(true);
             frameSlider.showTickLabelsProperty().setValue(true);
             strapSlider.showTickLabelsProperty().setValue(true);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Méretek (kerekítve)");
+            alert.setHeaderText("Szíj szélessége: " + Math.round(strap.getWidth()) + " px\n" +
+                    "Számlap átmérője: " + Math.round(watchFace.getRadius() * 2) + " px\n" +
+                    "Keret átmérője: " + Math.round(frame.getRadius() * 2) + " px");
+            alert.showAndWait();
         }
     }
     public void resetView(){
