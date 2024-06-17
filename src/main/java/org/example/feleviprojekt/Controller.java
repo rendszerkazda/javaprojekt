@@ -252,12 +252,6 @@ public class Controller implements Initializable {
                 hour = Integer.parseInt(line[0]) / 60;
                 minute = Integer.parseInt(line[0]) % 60;
 
-                if (watchFaceRadius == 0 || frameRadius == 0 || strapWidth == 0) {
-                    throw new Exception(
-                        "A fájlban hibás adatok találhatók! " +
-                        "Az óra alapértelmezett értékekre lett állítva!"
-                    );
-                }
                 file.close();
                 ChangeSliders(watchFaceRadius,frameRadius,strapWidth);
                 ChangeSliders();
@@ -270,9 +264,6 @@ public class Controller implements Initializable {
                 Animate(1);
             }
 
-        }
-        catch (FileNotFoundException e) {
-            System.out.println("A fájl nem található!");
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
