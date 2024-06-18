@@ -275,6 +275,8 @@ private Stage stage;
             savefile.setTitle("Fájl mentése...");
             savefile.setInitialFileName("karora"+ (int)timeSlider.getValue() + ".ora");
             savefile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Óra fájl", "*.ora");
+            savefile.getExtensionFilters().add(extFilter);
             FileOutputStream file = new FileOutputStream(savefile.showSaveDialog(stage));
             file.write((watchFace.getRadius() + " " + watchFaceColor.getValue() + "\n").getBytes());
             file.write((frame.getRadius() + " " + frameColor.getValue() + "\n").getBytes());
