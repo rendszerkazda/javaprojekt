@@ -106,104 +106,162 @@ public class Controller implements Initializable {
     @FXML
     private ColorPicker strapColor;
 //endregion
-    private Stage stage;
+private Stage stage;
+    // Óra és perc változók inicializálása
     private int hour = 3, minute = 60;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // A számlap és keret maximális méretének beállítása
         int maxWatchFace = 70;
         int maxFrame = maxWatchFace + 3;
+        // A számlap csúszka maximális értékének beállítása
         watchFaceSlider.setMax(maxWatchFace);
+        // A keret csúszka maximális értékének beállítása
         frameSlider.setMax(maxWatchFace+5);
+        // A számlap csúszka értékének figyelése
         watchFaceSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                // A keret csúszka maximális értékének beállítása a számlap csúszka értékéhez képest
                 frameSlider.setMax(watchFaceSlider.getValue()+5);
+                // A számlap sugárának beállítása a csúszka értékéhez
                 watchFace.setRadius(watchFaceSlider.getValue());
+                // A keret csúszka értékének beállítása a számlap csúszka értékéhez képest
                 frameSlider.setValue(watchFaceSlider.getValue()+3);
+                // Az óramutatók frissítése
                 ChangeHands();
             }
         });
+        // A keret csúszka értékének figyelése
         frameSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                // A keret csúszka minimális értékének beállítása a számlap csúszka értékéhez képest
                 frameSlider.setMin(watchFaceSlider.getValue()+1);
+                // A keret csúszka maximális értékének beállítása a számlap csúszka értékéhez képest
                 int maxFrameSize = (int) ((watchFaceSlider.getValue()<30) ? (watchFace.getRadius()+3) : watchFace.getRadius() + 25);
                 frameSlider.setMax(maxFrameSize);
+                // A keret sugárának beállítása a csúszka értékéhez
                 frame.setRadius(frameSlider.getValue());
+                // A hátoldali nézet keretének sugárának beállítása a csúszka értékéhez
                 backviewFrame.setRadius(frameSlider.getValue());
+                // Az oldalnézet keretének szélességének beállítása a csúszka értékéhez
                 sideviewFrame.setWidth(frameSlider.getValue()*2);
+                // Az ablak frissítése
                 WindowChanged();
             }
         });
+        // A szíj csúszka értékének figyelése
         strapSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                // A szíj szélességének beállítása a csúszka értékéhez
                 strap.setWidth(strapSlider.getValue());
+                // Az oldalnézet szíjának szélességének beállítása a csúszka értékéhez
                 sideviewStrap.setWidth(strapSlider.getValue());
+                // A hátoldali nézet szíjának szélességének beállítása a csúszka értékéhez
                 backviewStrap.setWidth(strapSlider.getValue());
+                // Az ablak frissítése
                 WindowChanged();
             }
         });
+        // Az idő csúszka értékének figyelése
         timeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                // Az idő beállítása a csúszka értékéhez
                 int time = (int)timeSlider.getValue();
                 hour = time / 60;
                 minute = time % 60;
+                // Az óra és perc beviteli mezők értékének beállítása
                 hourTextField.setText(Integer.toString(hour));
                 minuteTextField.setText(Integer.toString(minute));
+                // Az óramutatók frissítése
                 ChangeHands();
             }
         });
-        hourTextField.textProperty().addListener((observable, oldvalue, newvalue) -> {
-            try {
-                hour = Integer.parseInt(hourTextField.getText());
-                if (hour > 23) {
-                    hourTextField.setText("23");
-                    hour = 23;
+// Óra beviteli mező figyelője
+        hourTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Ellenőrzi, hogy az új érték csak számjegyeket tartalmaz-e
+                if (!newValue.matches("\\d*")) {
+                    // Ha nem, visszaállítja az előző értékre
+                    hourTextField.setText(oldValue);
                 }
-                ChangeSliders();
-                ChangeHands();
-            } catch (Exception e) {
-                hourTextField.setText("0");
-                hour = 0;
-            }
-        });
-        minuteTextField.textProperty().addListener((observable, oldvalue, newvalue) -> {
-            try {
-                minute = Integer.parseInt(minuteTextField.getText());
-                if (minute > 59) {
-                    minuteTextField.setText("59");
-                    minute = 59;
+                try {
+                    // Megpróbálja az új értéket órává alakítani
+                    hour = Integer.parseInt(hourTextField.getText());
+                    // Ha az óra értéke nagyobb, mint 23, korlátozza 23-ra
+                    if (hour > 23) {
+                        hourTextField.setText("23");
+                        hour = 23;
+                    }
+                    // Frissíti a csúszkákat és az óramutatókat
+                    ChangeSliders();
+                    ChangeHands();
+                } catch (Exception e){
+                    // Ha nem sikerül az órává alakítás, visszaállítja 0-ra
+                    hourTextField.setText("0");
+                    hour = 0;
                 }
-                ChangeSliders();
-                ChangeHands();
-            } catch (Exception e) {
-                minuteTextField.setText("0");
-                minute = 0;
             }
         });
+// Perc beviteli mező figyelője
+        minuteTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Ellenőrzi, hogy az új érték csak számjegyeket tartalmaz-e
+                if (!newValue.matches("\\d*")) {
+                    // Ha nem, visszaállítja az előző értékre
+                    minuteTextField.setText(oldValue);
+                }
+                try {
+                    // Megpróbálja az új értéket perccé alakítani
+                    minute = Integer.parseInt(minuteTextField.getText());
+                    // Ha a perc értéke nagyobb, mint 59, korlátozza 59-re
+                    if (minute > 59) {
+                        minuteTextField.setText("59");
+                        minute = 59;
+                    }
+                    // Frissíti a csúszkákat és az óramutatókat
+                    ChangeSliders();
+                    ChangeHands();
+                } catch (Exception e){
+                    // Ha nem sikerül a perccé alakítás, visszaállítja 0-ra
+                    minuteTextField.setText("0");
+                    minute = 0;
+                }
+            }
+        });
+// A 'felsoPane' osztályú objektum első elválasztójának pozícióját figyelő eseménykezelő
         felsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                // Az 'alsoPane' elválasztóinak pozícióit beállítja a 'felsoPane' elválasztóinak pozícióival
                 alsoPane.setDividerPositions(felsoPane.getDividerPositions());
+                // Frissíti az ablakot
                 WindowChanged();
             }
         });
+// Az 'alsoPane' osztályú objektum első elválasztójának pozícióját figyelő eseménykezelő
         alsoPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                // A 'felsoPane' elválasztóinak pozícióit beállítja az 'alsoPane' elválasztóinak pozícióival
                 felsoPane.setDividerPositions(alsoPane.getDividerPositions());
+                // Frissíti az ablakot
                 WindowChanged();
             }
         });
+// A 'mainPane' osztályú objektum első elválasztójának pozícióját figyelő eseménykezelő
         mainPane.getDividers().get(0).positionProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                // Frissíti az ablakot
                 WindowChanged();
             }
         });
-
         //Startup
         currentTimeBtn.fire();
         generateAll();
@@ -224,8 +282,25 @@ public class Controller implements Initializable {
             file.write((hour * 60 + minute + "\n").getBytes());
             file.close();
         }
+        catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl mentése közben!");
+            alert.setContentText("Nem választott ki fájlt!");
+            alert.showAndWait();
+        }
+        catch (FileNotFoundException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl mentése közben!");
+            alert.setContentText("A fájl nem található!");
+            alert.showAndWait();
+        }
         catch (Exception e) {
-            System.out.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl mentése közben!");
+            alert.showAndWait();
         }
 
     }
@@ -235,8 +310,12 @@ public class Controller implements Initializable {
         double strapWidth = 0;
         String[] colors = new String[3];
         try {
+            Random rn = new Random();
             FileChooser openfile = new FileChooser();
             openfile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            openfile.setInitialFileName("karora" +rn.nextInt(1000000)+".ora");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Óra fájl", "*.ora");
+            openfile.getExtensionFilters().add(extFilter);
             openfile.setTitle("Fájl megnyitása...");
             Scanner file = new Scanner(new FileInputStream(openfile.showOpenDialog(stage)));
             while(file.hasNextLine()){
@@ -264,10 +343,64 @@ public class Controller implements Initializable {
             }
             file.close();
         }
+        catch (FileNotFoundException e ){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl beolvasása közben!");
+            alert.setContentText("A fájl nem található!");
+            alert.showAndWait();
+        }
+        catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl beolvasása közben!");
+            alert.setContentText("Nem választott ki fájlt!");
+            alert.showAndWait();
+        }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Hiba");
             alert.setHeaderText("Hiba történt a fájl beolvasása közben!");
+            alert.setContentText("A fájl formátuma nem megfelelő!");
+            alert.showAndWait();
+        }
+    }
+    public void delete(){
+        try {
+            FileChooser deletefile = new FileChooser();
+            deletefile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            deletefile.setTitle("Fájl törlése...");
+            File file = deletefile.showOpenDialog(stage);
+            if (file == null) return; //Ha a felhasználó nem választott ki fájlt, kilép
+            Alert sure = new Alert(Alert.AlertType.CONFIRMATION); //Megerősítő ablak
+            sure.setTitle("Törlés megerősítése");
+            sure.setHeaderText("Biztosan törölni szeretné a fájlt?");
+            sure.setContentText("A fájl visszaállíthatatlanul törlődik!");
+            Optional<ButtonType> result = sure.showAndWait(); //A gombnyomás eredménye
+            if (result.get() == ButtonType.CANCEL) return;  //Ha a felhasználó meggondolta magát
+            if (file.delete()) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Siker");
+                alert.setHeaderText("A fájl sikeresen törölve!");
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Hiba");
+                alert.setHeaderText("Hiba történt a fájl törlése közben!");
+                alert.showAndWait();
+            }
+        } catch (NullPointerException e){ //Ha a felhasználó nem választott ki fájlt
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl törlése közben!");
+            alert.setContentText("Nem választott ki fájlt!");
+            alert.showAndWait();
+        }
+        catch (Exception e) { //Ha bármi más hiba történik
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Hiba");
+            alert.setHeaderText("Hiba történt a fájl törlése közben!");
             alert.showAndWait();
         }
     }

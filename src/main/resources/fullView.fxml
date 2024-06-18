@@ -36,6 +36,11 @@
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#delete" text="Törlés">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="DELETE" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                     </accelerator>
+                  </MenuItem>
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Nézet">
@@ -114,7 +119,7 @@
         <items>
             <SplitPane fx:id="felsoPane" dividerPositions="0.4999999999999999" prefHeight="184.0" prefWidth="598.0">
               <items>
-                <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#topFocus" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane fx:id="topviewPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#resetView" onMouseClicked="#topFocus" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <Line fx:id="buckleLine" endX="348.5000305175781" endY="147.0" startX="335.0000305175781" startY="147.0" stroke="#666666" strokeWidth="3.0" />
                         <Rectangle fx:id="strap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="60.0" y="122.0" />
@@ -125,7 +130,7 @@
                         <Rectangle fx:id="buckleRec" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" x="335.0" y="122.0" />
                      </children>
                   </AnchorPane>
-                <AnchorPane fx:id="sideviewPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#sideFocus" prefHeight="182.0" prefWidth="0.0">
+                <AnchorPane fx:id="sideviewPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#resetView" onMouseClicked="#sideFocus" prefHeight="182.0" prefWidth="0.0">
                      <children>
                         <Rectangle fx:id="sideviewStrap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="4.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="62.0" y="147.0" />
                         <Rectangle fx:id="sideviewBuckle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="4.0" stroke="#595858" strokeType="INSIDE" strokeWidth="2.0" width="27.0" x="332.0" y="147.0" />
@@ -136,7 +141,7 @@
             </SplitPane>
             <SplitPane fx:id="alsoPane" dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
               <items>
-                <AnchorPane fx:id="backviewPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#backFocus" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane fx:id="backviewPane" minHeight="0.0" minWidth="0.0" onContextMenuRequested="#resetView" onMouseClicked="#backFocus" prefHeight="160.0" prefWidth="100.0">
                      <children>
                         <Line fx:id="backviewBuckleLine" endX="356.0" endY="157.0" startX="345.0" startY="157.0" stroke="#666666" strokeWidth="3.0" />
                         <Rectangle fx:id="backviewStrap" arcHeight="5.0" arcWidth="5.0" fill="#735536" height="50.0" stroke="BLACK" strokeType="INSIDE" width="274.0" x="71.0" y="132.0" />
