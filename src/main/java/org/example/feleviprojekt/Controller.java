@@ -272,7 +272,7 @@ private Stage stage;
             FileChooser savefile = new FileChooser();
             savefile.setTitle("Fájl mentése...");
             savefile.setInitialFileName("karora"+ (int)timeSlider.getValue() + ".ora");
-            savefile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            savefile.setInitialDirectory(new File("."));
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Óra fájl", "*.ora");
             savefile.getExtensionFilters().add(extFilter);
             FileOutputStream file = new FileOutputStream(savefile.showSaveDialog(stage));
@@ -312,7 +312,7 @@ private Stage stage;
         try {
             Random rn = new Random();
             FileChooser openfile = new FileChooser();
-            openfile.setInitialDirectory(new File(System.getProperty("user.dir")+"/src/main/saved"));
+            openfile.setInitialDirectory(new File("."));
             openfile.setInitialFileName("karora" +rn.nextInt(1000000)+".ora");
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Óra fájl", "*.ora");
             openfile.getExtensionFilters().add(extFilter);
