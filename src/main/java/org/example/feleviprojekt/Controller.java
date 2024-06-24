@@ -500,7 +500,10 @@ private Stage stage;
             alert.setTitle("Méretek (kerekítve)");
             alert.setHeaderText("Szíj szélessége: " + Math.round(strap.getWidth()) + " px\n" +
                     "Számlap átmérője: " + Math.round(watchFace.getRadius() * 2) + " px\n" +
-                    "Keret átmérője: " + Math.round(frame.getRadius() * 2) + " px");
+                    "Keret átmérője: " + Math.round(frame.getRadius() * 2) + " px\n" +
+                    "Számlap felület: " + Math.round(Math.PI * Math.pow(watchFace.getRadius(),2)) + " px²\n" +
+                    "Összesen: " + Math.round((Math.PI * Math.pow(watchFace.getRadius(),2)) + (Math.PI * Math.pow(frame.getRadius(),2)) + (strap.getWidth()*strap.getHeight() - strap.getHeight()*frame.getRadius())) + " px²\n" +
+                    "Össz térfogat: " + Math.round((Math.PI * Math.pow(watchFace.getRadius(),2)) + (Math.PI * Math.pow(frame.getRadius(),2)) + (strap.getWidth() * 2 * (watchFace.getRadius() + frame.getRadius()))) + " px³");
             alert.showAndWait();
         }
     }
